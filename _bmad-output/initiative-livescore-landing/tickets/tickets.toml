@@ -1,0 +1,32 @@
+# Initiative epic breakdown — build order. Approved 2026-11-09.
+
+[[epic]]
+id = 1
+slug = "epic-i18n-foundation"
+title = "Six-locale foundation on the marketing host"
+description = "The site routes all six locales (ar RTL), uses canonical host football-live-bot.online in app metadata, and shows a brand shell with a bot CTA — ready for content pages."
+covers = ["R1", "R2"]
+
+[[epic]]
+id = 2
+slug = "epic-marketing-content"
+title = "Claim-safe marketing pages in git"
+description = "Home, guides, pricing, FAQ, privacy, terms exist in every locale from in-repo copy; CTAs open LiveScoreAppBot; claims match SERVICE-CAPABILITIES and omit non-goals."
+covers = ["R3", "R4", "R5", "R8"]
+after = [{ epic = 1, needs = "locale routing, RTL, siteUrl, and brand shell" }]
+
+[[epic]]
+id = 3
+slug = "epic-seo-crawl-surface"
+title = "Crawlable SEO and LLM surfaces"
+description = "robots.txt, complete sitemaps with absolute football-live-bot.online URLs, canonical/hreflang, per-page meta/OG/JSON-LD, llms.txt and llms-full.txt are publicly reachable and cover the indexable routes."
+covers = ["R1", "R7"]
+after = [{ epic = 2, needs = "stable locale page routes to list in sitemaps and llms files" }]
+
+[[epic]]
+id = 4
+slug = "epic-official-channels"
+title = "Live official channels without Mini App login"
+description = "The official channels page/section shows live {id,title,logo,link} from the product list contract via a public-safe path; list updates without editing content files."
+covers = ["R6"]
+after = [{ epic = 2, needs = "channels page slot and content model in all locales" }]

@@ -56,8 +56,10 @@ Football fans and channel/group admins searching for Telegram live-score bots fi
 - This initiative owns the marketing site repo (`livescore-landing`), not Mini App / bot / server product features — except any minimal public channels exposure agreed for R6/C5.
 - Out: Discord landing, prediction game, tipster content, CMS, automated MT pipeline as a product requirement, admin panel docs.
 - Out: rebuilding the Mini App inside the marketing site.
-- Touch point: Live Score `GET /api/channels` (or a public façade) — owner: epic covering R6/C5.
-- Tracer: foundation i18n → SEO artifacts → content pages → channels API → claim QA against capabilities.
+- Touch point: Live Score `GET /api/channels` (or a public façade) — owner: epic-official-channels.
+- R1 split: epic-i18n-foundation owns app metadata/`siteUrl`; epic-seo-crawl-surface owns absolute URLs in sitemaps/SEO artifacts.
+- Shared decisions home: locale URL slug + content-file layout → epic-i18n-foundation; public channels contract → epic-official-channels.
+- Tracer: epic-i18n-foundation → epic-marketing-content → epic-seo-crawl-surface; epic-official-channels after marketing-content.
 
 ## References
 
@@ -79,3 +81,5 @@ Football fans and channel/group admins searching for Telegram live-score bots fi
 - Open question: URL slug for `pt-BR` (`/pt-BR/...` vs `/pt/...`).
 - Decision: 2026-11-09 — production domain is `football-live-bot.online`.
 - Decision: 2026-11-09 — locales locked to `ar`, `en`, `es`, `fr`, `pt-BR`, `ru`.
+- Decision: 2026-11-09 — slice into four epics (capability / early-usable): i18n-foundation → marketing-content → seo-crawl-surface; official-channels after marketing-content. Declined merge of content+SEO.
+- Decision: 2026-11-09 — first demo is epic 1 (six locales + RTL + shell + bot CTA). Least-certain work is official-channels (public API path).
