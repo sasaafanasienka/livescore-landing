@@ -3,7 +3,7 @@ title: 'Claim-safe FAQ page'
 type: feature
 ticket: 5
 created: '2026-11-09'
-status: built
+status: done
 baseline_revision: 'a927aa02ab8caab06d2da272c63388b0d7b2c650'
 route: oneshot
 route_source: pinned
