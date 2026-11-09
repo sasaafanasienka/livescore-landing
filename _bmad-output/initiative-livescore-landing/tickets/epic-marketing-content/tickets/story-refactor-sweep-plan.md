@@ -69,4 +69,4 @@ Oneshot: deferred queue is already fixed in code; remaining work is bookkeeping 
 - Patched counts: high 0, medium 0, low 0
 - Verification: `pnpm lint` success; `pnpm build` success (53 static pages)
 - Residual risks: story 2.1 locale wording follow-up left as previously recommended; no new deferred items
-- Commit: (set after commit)
+- Commit: `d9f8ac0d793f4c0bb3b6203255b36d2c272aff06`
