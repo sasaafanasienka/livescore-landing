@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 
 import { siteDetails } from "@/data/siteDetails";
 import { routing, type UrlLocale } from "@/i18n/routing";
-import { getPageMarkdown } from "@/lib/content";
+import { MARKETING_PAGES, getPageMarkdown } from "@/lib/content";
 
 type Props = {
 	params: { locale: string };
@@ -18,7 +18,7 @@ export default async function LocaleHomePage({ params }: Props) {
 	setRequestLocale(locale);
 
 	const t = await getTranslations("Shell");
-	const body = await getPageMarkdown(locale as UrlLocale, "home");
+	const body = await getPageMarkdown(locale as UrlLocale, MARKETING_PAGES.home);
 
 	return (
 		<section className="min-h-[60vh] flex flex-col items-center justify-center gap-6 px-6 pt-28 pb-16 text-center">
