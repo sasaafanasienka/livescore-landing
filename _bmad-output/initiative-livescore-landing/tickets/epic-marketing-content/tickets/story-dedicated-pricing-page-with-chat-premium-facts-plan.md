@@ -3,7 +3,7 @@ title: 'Dedicated pricing page with chat Premium facts'
 type: feature
 ticket: 2
 created: '2026-11-09'
-status: built
+status: done
 baseline_revision: '72b6874d660b5489ab2db74a99027de2343ded35'
 route: oneshot
 route_source: pinned
