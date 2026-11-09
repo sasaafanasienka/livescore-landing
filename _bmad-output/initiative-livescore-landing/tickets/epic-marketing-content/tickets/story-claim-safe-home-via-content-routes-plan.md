@@ -1,9 +1,7 @@
 ---
 title: "Claim-safe home via content routes"
 ticket: 1
-status: blocked
-blocked_at: "2026-11-09"
-blocked_reason: "dirty working tree: untracked .agents/, _bmad/, skills-lock.json, and pulled story leaf; clean or commit unrelated files before builder can proceed"
+status: draft
 ---
 
 ## Auto Run Result
