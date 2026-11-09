@@ -3,7 +3,7 @@ title: 'Claim-safe home via content routes'
 type: feature
 ticket: 1
 created: '2026-11-09'
-status: built
+status: done
 baseline_revision: 'd586ab6139682b6d18ad75d161c063a56ef967c3'
 route: oneshot
 route_source: pinned
