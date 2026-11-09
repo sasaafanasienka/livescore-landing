@@ -34,3 +34,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local BMAD / agent skill install (tracked outputs live under _bmad-output/)
+.agents/
+_bmad/
+skills-lock.json
