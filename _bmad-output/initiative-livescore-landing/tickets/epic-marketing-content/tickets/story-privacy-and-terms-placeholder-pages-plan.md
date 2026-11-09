@@ -3,7 +3,7 @@ title: 'Privacy and Terms placeholder pages'
 type: feature
 ticket: 6
 created: '2026-11-09'
-status: built
+status: done
 baseline_revision: '9d47bc88b52d53b36918ed7e0b14eb37d3ee6928'
 route: oneshot
 route_source: pinned
