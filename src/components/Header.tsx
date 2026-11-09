@@ -7,6 +7,7 @@ import { HiOutlineXMark, HiBars3 } from "react-icons/hi2";
 import { FaFingerprint } from "react-icons/fa";
 
 import Container from "./Container";
+import LocaleSwitcher from "./LocaleSwitcher";
 import { siteDetails } from "@/data/siteDetails";
 import { Link } from "@/i18n/navigation";
 
@@ -30,6 +31,9 @@ const Header: React.FC = () => {
 					</Link>
 
 					<ul className="hidden md:flex space-x-6 items-center">
+						<li>
+							<LocaleSwitcher />
+						</li>
 						<li>
 							<a
 								href={siteDetails.botUrl}
@@ -72,6 +76,9 @@ const Header: React.FC = () => {
 			>
 				<div id="mobile-menu" className="md:hidden bg-white shadow-lg">
 					<ul className="flex flex-col space-y-4 pt-1 pb-6 px-6">
+						<li>
+							<LocaleSwitcher />
+						</li>
 						<li>
 							<a
 								href={siteDetails.botUrl}

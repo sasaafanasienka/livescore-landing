@@ -33,7 +33,8 @@ export const routing = defineRouting({
 	localePrefix: "always",
 	// Accept-Language negotiation on `/`; fallback defaultLocale `en`.
 	// next-intl issues temporary 307 redirects (not 301/308), so crawlers are not permanently locked.
-	// localeCookie off until switcher (1.4): otherwise NEXT_LOCALE from prior visits overrides Accept-Language.
+	// Keep localeCookie off so Accept-Language on `/` is not overridden by NEXT_LOCALE after a switch.
+	// Sticky `/` preference after explicit switch deferred; locale lives in the URL prefix.
 	localeDetection: true,
 	localeCookie: false,
 });
