@@ -10,6 +10,7 @@ companions: []
 after: []
 risk: medium
 refined: true
+status: done
 ---
 
 # Six-locale foundation on the marketing host
@@ -66,3 +67,4 @@ A visitor hitting the marketing host is sent to an appropriate locale prefix, se
 - Assumption: `hreflang` / `x-default` finalized in epic-seo-crawl-surface; this epic only guarantees crawlable `/{locale}` URLs.
 - Assumption: default/fallback locale `en`.
 - Decision: 2026-11-09 — tracer bullet = story 1 `next-intl locale shell with host and bot CTA` (hitl). Least-certain next = story 2 Accept-Language `/` redirect. R5 split: shell+CTA in 1, switcher in 4. Declined separate closing e2e suite; entry `verify` lines are the checks.
+- Decision: 2026-11-09 — epic closed `done`: all five stories done; locale routing/RTL/siteUrl/shell/content contract handed to epic-marketing-content.
