@@ -1,0 +1,10 @@
+{
+	"Brand": {
+		"name": "Live Score"
+	},
+	"Shell": {
+		"cta": "افتح LiveScoreAppBot",
+		"placeholder": "نتائج كرة القدم المباشرة وتحديثات المباريات عبر تيليجرام.",
+		"navHome": "الرئيسية"
+	}
+}

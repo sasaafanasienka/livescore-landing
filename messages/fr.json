@@ -1,0 +1,10 @@
+{
+	"Brand": {
+		"name": "Live Score"
+	},
+	"Shell": {
+		"cta": "Ouvrir LiveScoreAppBot",
+		"placeholder": "Scores de football en direct et mises à jour des matchs via Telegram.",
+		"navHome": "Accueil"
+	}
+}
