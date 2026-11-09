@@ -72,4 +72,4 @@ Oneshot: Header/Footer already use `@/i18n/navigation` Link + Brand/CTA; only ne
 - Patched counts: high 0, medium 0, low 0
 - Verification: `pnpm exec next build` success; `/en` HTTP 200 with hrefs `/en/guide/groups`, `/en/guide/channels`, `/en/official-channels`, `/en/pricing`, `/en/faq`, `/en/privacy`, `/en/terms` all HTTP 200; no `#features`/`#testimonials`/`#pricing` in shell HTML or shell data files
 - Residual risks: none material for R6; SEO/channels API remain out of scope
-- Commit: (pending)
+- Commit: `67b06917e1b874b2b812a1bb49c42678f36f98aa`
