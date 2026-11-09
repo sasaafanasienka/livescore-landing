@@ -74,4 +74,4 @@ Allowed claim surface (SERVICE-CAPABILITIES only): register from **private** cha
 - Patched counts: high 0, medium 1, low 0
 - Verification: `pnpm exec next build` success (pre- and post-patch); HTTP 200 + `/group`|/channel` + bot CTA + forbidden-claim omit scan pass for all six locales × both paths
 - Residual risks: nav/footer guide links still sibling epic work; locale wording polish possible without second lens
-- Commit: (set after commit)
+- Commit: `f27b39e14690ce445e9c7f2c9a688e16f7a80904`
