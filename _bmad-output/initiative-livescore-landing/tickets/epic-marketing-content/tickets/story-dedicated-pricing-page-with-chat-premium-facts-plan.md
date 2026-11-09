@@ -68,4 +68,4 @@ Oneshot: reuse `MARKETING_PAGES.pricing` / `getPageMarkdown` / home page shell; 
 - Patched counts: high 0, medium 0, low 0
 - Verification: `pnpm exec next build` success; HTTP 200 + Premium facts + bot CTA + forbidden-claim omit scan pass for `/ar|/en|/es|/fr|/pt|/ru` `/pricing`
 - Residual risks: nav/footer Pricing link still epic sibling work; locale wording polish possible without second lens
-- Commit: (set after finalize commit)
+- Commit: `f9c937cf8d2c10e4556c40346dace224a3ab0a90`
