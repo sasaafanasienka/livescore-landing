@@ -70,4 +70,4 @@ Allowed claim surface (SERVICE-CAPABILITIES only): page is a **static placeholde
 - Patched counts: high 0, medium 0, low 0
 - Verification: `pnpm exec next build` success; HTTP 200 + placeholder signal + bot CTA + forbidden-claim omit scan + no page API fetch for `/ar|/en|/es|/fr|/pt|/ru` `/official-channels`
 - Residual risks: nav/footer Official channels link still sibling epic work; epic 4 still owns live list wiring
-- Commit: _(set after commit)_
+- Commit: `462243749c8f5ee2cbc0f4ff79c9a256603e51cc`
