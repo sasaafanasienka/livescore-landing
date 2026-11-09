@@ -3,7 +3,7 @@ title: 'Group and channel guide pages'
 type: feature
 ticket: 3
 created: '2026-11-09'
-status: built
+status: done
 baseline_revision: '3da4f1ce15cfa8515ddd93bc99cdd8daa2483b57'
 route: oneshot
 route_source: pinned
