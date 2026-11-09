@@ -3,7 +3,7 @@ title: 'Shell nav and footer for sitemap'
 type: feature
 ticket: 7
 created: '2026-11-09'
-status: built
+status: done
 baseline_revision: '7726fc1e54de5525c0e1006fa45e4bfeefbb9451'
 route: oneshot
 route_source: pinned
