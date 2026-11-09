@@ -73,4 +73,4 @@ Oneshot: reuse existing `MARKETING_PAGES.privacy`/`terms` + FAQ page shell; two 
 - Patched counts: high 0, medium 0, low 0
 - Verification: `pnpm exec next build` success; HTTP 200 + TODO + Live Score + LiveScoreAppBot + bot CTA + forbidden-claim omit scan pass for `/ar|/en|/es|/fr|/pt|/ru` × `/privacy|/terms`
 - Residual risks: nav/footer Privacy/Terms links still epic sibling work; full counsel legal copy deferred by locked decision
-- Commit: (set after finalize commit)
+- Commit: `8a798849c3d2e5d0690590a02b4fec0cb32243c8`
