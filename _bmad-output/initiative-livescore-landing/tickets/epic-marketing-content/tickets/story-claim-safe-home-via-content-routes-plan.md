@@ -76,4 +76,4 @@ Oneshot: tracer is content + contract docs/map reuse of `getPageMarkdown` / `[lo
 - Patched counts: high 0, medium 2, low 1
 - Verification: `pnpm exec next build` success; HTTP 200 + distinctive phrases + bot CTA + forbidden-claim scan pass for `/ar|/en|/es|/fr|/pt|/ru` (post-patch re-verify pass)
 - Residual risks: sibling routes not implemented yet (expected); follow-up review recommended for locale copy polish
-- Commit: pending finalize
+- Commit: `54985863ea4dd8d9739530e6dfbeaa168d0663ac`
