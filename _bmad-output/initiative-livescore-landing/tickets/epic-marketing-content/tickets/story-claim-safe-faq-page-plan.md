@@ -68,4 +68,4 @@ Oneshot: reuse `MARKETING_PAGES.faq` (already mapped) + pricing page shell; new 
 - Patched counts: high 0, medium 0, low 0
 - Verification: `pnpm exec next build` success; HTTP 200 + bot/audience/Premium facts + bot CTA + forbidden-claim omit scan pass for `/ar|/en|/es|/fr|/pt|/ru` `/faq`
 - Residual risks: nav/footer FAQ link still epic sibling work; locale wording polish possible without second lens
-- Commit: (set after commit)
+- Commit: `d582fb01aedd30d1c81b7827418ab0c56c8bc718`
