@@ -31,6 +31,9 @@ export const routing = defineRouting({
 	locales,
 	defaultLocale: "en",
 	localePrefix: "always",
-	// Story 1.2 owns Accept-Language negotiation on `/`.
-	localeDetection: false,
+	// Accept-Language negotiation on `/`; fallback defaultLocale `en`.
+	// next-intl issues temporary 307 redirects (not 301/308), so crawlers are not permanently locked.
+	// localeCookie off until switcher (1.4): otherwise NEXT_LOCALE from prior visits overrides Accept-Language.
+	localeDetection: true,
+	localeCookie: false,
 });
