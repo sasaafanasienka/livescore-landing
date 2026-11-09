@@ -1,0 +1,56 @@
+# epic-i18n-foundation stories — build order. Approved path 2026-11-09.
+
+[[entry]]
+id = 1
+type = "story"
+title = "next-intl locale shell with host and bot CTA"
+description = "Installs next-intl App Router [locale] routing for ar/en/es/fr/pt/ru (pt→pt-BR), sets siteUrl to football-live-bot.online, applies ar RTL, and shows a Live Score nav/footer shell with primary CTA to LiveScoreAppBot on the locale home (placeholder body). R5 part: shell + CTA only — no locale switcher."
+verify = "Each of /ar /en /es /fr /pt /ru returns 200; /ar is RTL; page metadata/base uses https://football-live-bot.online; home shows Live Score chrome and a t.me/LiveScoreAppBot CTA."
+covers = ["R1", "R2", "R5"]
+after = []
+hitl = true
+risk = "medium"
+
+[[entry]]
+id = 2
+type = "story"
+title = "Accept-Language redirect from /"
+description = "Root / negotiates Accept-Language and redirects to the matching locale prefix, falling back to /en, without permanently locking crawlers to one locale."
+verify = "Request / with Accept-Language: ru redirects to a /ru URL; request / without a usable language preference redirects to /en."
+covers = ["R3"]
+after = [1]
+hitl = false
+risk = "high"
+
+[[entry]]
+id = 3
+type = "story"
+title = "content/{locale}/{page}.md layout contract"
+description = "Establishes content/{locale}/{page}.md (product locale ids, pt-BR for /pt), documents the URL↔content map for later epics, and loads the locale home placeholder body from content/{locale}/home.md."
+verify = "content/en/home.md exists and its text appears on /en; content/pt-BR/home.md exists for Portuguese; in-repo mapping note documents URL pt → content pt-BR for epic 2+."
+covers = ["R4"]
+after = [1]
+hitl = false
+risk = "low"
+
+[[entry]]
+id = 4
+type = "story"
+title = "Locale switcher in the shell"
+description = "Adds a locale switcher to the brand shell that moves between ar/en/es/fr/pt/ru prefixes while keeping the current path. R5 part: switcher only."
+verify = "From /en, switching to ru lands on /ru (same path shape); switcher lists all six locales."
+covers = ["R5"]
+after = [1, 3]
+hitl = false
+risk = "low"
+
+[[entry]]
+id = 5
+type = "story"
+title = "Refactor sweep"
+description = "Cleanup-only pass over deferred nits from plans/review in this epic; no new scope."
+verify = "Lint/build still pass; no new features beyond cleanup called out in the story plan at start."
+covers = []
+after = [2, 3, 4]
+hitl = false
+risk = "low"
