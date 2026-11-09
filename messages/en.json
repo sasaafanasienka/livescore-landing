@@ -5,6 +5,17 @@
 	"Shell": {
 		"cta": "Open LiveScoreAppBot",
 		"placeholder": "Live football scores and match updates via Telegram.",
-		"navHome": "Home"
+		"navHome": "Home",
+		"nav": {
+			"groups": "Groups",
+			"channels": "Channels",
+			"officialChannels": "Official channels",
+			"pricing": "Pricing",
+			"faq": "FAQ"
+		},
+		"footer": {
+			"privacy": "Privacy",
+			"terms": "Terms"
+		}
 	}
 }

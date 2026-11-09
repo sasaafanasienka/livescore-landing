@@ -5,6 +5,17 @@
 	"Shell": {
 		"cta": "Открыть LiveScoreAppBot",
 		"placeholder": "Живые футбольные счета и обновления матчей в Telegram.",
-		"navHome": "Главная"
+		"navHome": "Главная",
+		"nav": {
+			"groups": "Группы",
+			"channels": "Каналы",
+			"officialChannels": "Официальные каналы",
+			"pricing": "Тарифы",
+			"faq": "FAQ"
+		},
+		"footer": {
+			"privacy": "Конфиденциальность",
+			"terms": "Условия"
+		}
 	}
 }

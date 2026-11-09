@@ -8,6 +8,7 @@ import { FaFingerprint } from "react-icons/fa";
 
 import Container from "./Container";
 import LocaleSwitcher from "./LocaleSwitcher";
+import { menuItems } from "@/data/menuItems";
 import { siteDetails } from "@/data/siteDetails";
 import { Link } from "@/i18n/navigation";
 
@@ -22,8 +23,8 @@ const Header: React.FC = () => {
 	return (
 		<header className="bg-transparent fixed top-0 left-0 right-0 md:absolute z-50 mx-auto w-full">
 			<Container className="!px-0">
-				<nav className="shadow-md md:shadow-none bg-white md:bg-transparent mx-auto flex justify-between items-center py-2 px-5 md:py-10">
-					<Link href="/" className="flex items-center gap-2">
+				<nav className="shadow-md md:shadow-none bg-white md:bg-transparent mx-auto flex justify-between items-center py-2 px-5 md:py-10 gap-4">
+					<Link href="/" className="flex items-center gap-2 shrink-0">
 						<FaFingerprint className="text-foreground min-w-fit w-7 h-7" />
 						<span className="text-xl font-semibold text-foreground cursor-pointer">
 							{t("Brand.name")}
@@ -31,6 +32,16 @@ const Header: React.FC = () => {
 					</Link>
 
 					<ul className="hidden md:flex space-x-6 items-center">
+						{menuItems.map((item) => (
+							<li key={item.url}>
+								<Link
+									href={item.url}
+									className="text-foreground hover:text-foreground-accent transition-colors"
+								>
+									{t(`Shell.nav.${item.text}`)}
+								</Link>
+							</li>
+						))}
 						<li>
 							<LocaleSwitcher />
 						</li>
@@ -76,6 +87,17 @@ const Header: React.FC = () => {
 			>
 				<div id="mobile-menu" className="md:hidden bg-white shadow-lg">
 					<ul className="flex flex-col space-y-4 pt-1 pb-6 px-6">
+						{menuItems.map((item) => (
+							<li key={item.url}>
+								<Link
+									href={item.url}
+									className="text-foreground hover:text-foreground-accent transition-colors"
+									onClick={toggleMenu}
+								>
+									{t(`Shell.nav.${item.text}`)}
+								</Link>
+							</li>
+						))}
 						<li>
 							<LocaleSwitcher />
 						</li>

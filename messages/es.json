@@ -5,6 +5,17 @@
 	"Shell": {
 		"cta": "Abrir LiveScoreAppBot",
 		"placeholder": "Marcadores de fútbol en vivo y actualizaciones de partidos por Telegram.",
-		"navHome": "Inicio"
+		"navHome": "Inicio",
+		"nav": {
+			"groups": "Grupos",
+			"channels": "Canales",
+			"officialChannels": "Canales oficiales",
+			"pricing": "Precios",
+			"faq": "FAQ"
+		},
+		"footer": {
+			"privacy": "Privacidad",
+			"terms": "Términos"
+		}
 	}
 }

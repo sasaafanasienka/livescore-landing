@@ -5,6 +5,17 @@
 	"Shell": {
 		"cta": "افتح LiveScoreAppBot",
 		"placeholder": "نتائج كرة القدم المباشرة وتحديثات المباريات عبر تيليجرام.",
-		"navHome": "الرئيسية"
+		"navHome": "الرئيسية",
+		"nav": {
+			"groups": "المجموعات",
+			"channels": "القنوات",
+			"officialChannels": "القنوات الرسمية",
+			"pricing": "الأسعار",
+			"faq": "الأسئلة الشائعة"
+		},
+		"footer": {
+			"privacy": "الخصوصية",
+			"terms": "الشروط"
+		}
 	}
 }
