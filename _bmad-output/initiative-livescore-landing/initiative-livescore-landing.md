@@ -72,14 +72,15 @@ Football fans and channel/group admins searching for Telegram live-score bots fi
 
 ## Notes
 
-- Assumption: Default locale is `en` until decided otherwise.
 - Assumption: Display brand in UI is **Live Score**; host name `football-live-bot.online` is the canonical domain only.
 - Assumption: Guide pages for groups and channels are in scope (competitor parity of jobs), even though exact copy is new.
 - Assumption: Pricing may be a dedicated route or a crawlable home section plus FAQ — both acceptable if indexed.
 - Open question: How does the public site call official channels when `GET /api/channels` requires Telegram Mini App auth — new public endpoint on live-score, BFF with server credential, or build-time fetch?
 - Open question: Legal entity name, contact, and governing law for Privacy/Terms pages.
-- Open question: URL slug for `pt-BR` (`/pt-BR/...` vs `/pt/...`).
 - Decision: 2026-11-09 — production domain is `football-live-bot.online`.
 - Decision: 2026-11-09 — locales locked to `ar`, `en`, `es`, `fr`, `pt-BR`, `ru`.
 - Decision: 2026-11-09 — slice into four epics (capability / early-usable): i18n-foundation → marketing-content → seo-crawl-surface; official-channels after marketing-content. Declined merge of content+SEO.
 - Decision: 2026-11-09 — first demo is epic 1 (six locales + RTL + shell + bot CTA). Least-certain work is official-channels (public API path).
+- Decision: 2026-11-09 — Portuguese URL slug is `/pt` (product/content id stays `pt-BR`).
+- Decision: 2026-11-09 — `/` negotiates Accept-Language then redirects to `/{locale}` with fallback `/en`; default locale `en`.
+- Decision: 2026-11-09 — content layout `content/{locale}/{page}.md`; i18n via `next-intl`.

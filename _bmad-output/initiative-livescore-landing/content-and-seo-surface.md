@@ -4,16 +4,18 @@ Companion to initiative Requirements. HOW-level inventory; WHAT stays on the tic
 
 ## Locales
 
-| Code | Notes |
-|------|-------|
-| `ar` | RTL |
-| `en` | Default locale assumption until decided otherwise |
-| `es` | |
-| `fr` | |
-| `pt-BR` | BCP-47; URL slug may be `pt-BR` or `pt` — settle in slice |
-| `ru` | |
+| Product / content id | URL prefix | Notes |
+|----------------------|------------|-------|
+| `ar` | `/ar` | RTL |
+| `en` | `/en` | Default / fallback locale |
+| `es` | `/es` | |
+| `fr` | `/fr` | |
+| `pt-BR` | `/pt` | URL slug shortened; content folder stays `pt-BR` |
+| `ru` | `/ru` | |
 
 Every marketing URL exists in all six (or returns explicit alternate strategy documented in SEO story).
+
+Root `/` negotiates `Accept-Language` and redirects to a locale prefix (fallback `/en`). Indexable content lives under `/{locale}/…`; `hreflang` + `x-default` finalized in epic-seo-crawl-surface.
 
 ## Content ownership
 
