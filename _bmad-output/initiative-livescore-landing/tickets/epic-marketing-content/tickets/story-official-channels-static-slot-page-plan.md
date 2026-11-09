@@ -3,7 +3,7 @@ title: 'Official-channels static slot page'
 type: feature
 ticket: 4
 created: '2026-11-09'
-status: built
+status: done
 baseline_revision: 'f0a05d30efffd7ae9a0f188e8ed4226244bdc5b0'
 route: oneshot
 route_source: pinned
