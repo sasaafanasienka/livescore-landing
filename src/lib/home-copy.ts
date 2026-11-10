@@ -6,6 +6,7 @@ import {
 	type UrlLocale,
 	toProductLocale,
 } from "@/i18n/routing";
+import { typografDeep } from "@/lib/typograf";
 
 export type HomeFaqItem = {
 	question: string;
@@ -18,11 +19,10 @@ export type HomeHowTab = {
 	steps: string[];
 };
 
-export type HomePricingPanel = {
+export type HomePricingRow = {
 	label: string;
-	title: string;
-	body: string;
-	points: string[];
+	free: string;
+	premium: string;
 };
 
 export type HomeCopy = {
@@ -51,8 +51,9 @@ export type HomeCopy = {
 		title: string;
 		description: string;
 		moreLink: string;
-		personal: HomePricingPanel;
-		chats: HomePricingPanel;
+		freeColumn: string;
+		premiumColumn: string;
+		rows: HomePricingRow[];
 	};
 	channels: {
 		title: string;
@@ -91,8 +92,9 @@ function assertHomeCopy(value: unknown, locale: ProductLocale): HomeCopy {
 		!copy.notifications?.title ||
 		!copy.miniApp?.title ||
 		!copy.howItWorks?.tabs?.length ||
-		!copy.pricing?.personal ||
-		!copy.pricing?.chats ||
+		!copy.pricing?.rows?.length ||
+		!copy.pricing?.freeColumn ||
+		!copy.pricing?.premiumColumn ||
 		!copy.channels?.title ||
 		!copy.faq?.items?.length ||
 		!copy.closingCta?.heading
@@ -113,7 +115,8 @@ export async function getHomeCopy(urlLocale: UrlLocale): Promise<HomeCopy> {
 		`${productLocale}.json`,
 	);
 	const raw = await readFile(filePath, "utf8");
-	return assertHomeCopy(JSON.parse(raw) as unknown, productLocale);
+	const copy = assertHomeCopy(JSON.parse(raw) as unknown, productLocale);
+	return typografDeep(copy, urlLocale);
 }
 
 export function homeCopyProductLocales(): readonly ProductLocale[] {

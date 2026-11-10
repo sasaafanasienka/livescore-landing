@@ -1,32 +1,31 @@
 {
 	"Brand": {
-		"name": "Live Score"
+		"name": "Futebol. LIVE"
 	},
 	"Shell": {
-		"cta": "Abrir LiveScoreAppBot",
-		"placeholder": "Placares de futebol ao vivo e atualizações de jogos no Telegram.",
+		"cta": "Abrir bot",
+		"ctaAddToGroup": "Adicionar bot ao grupo",
+		"getStarted": "Começar",
+		"language": "Idioma",
 		"navHome": "Início",
+		"privacy": "Privacidade",
+		"terms": "Termos",
 		"nav": {
-			"groups": "Grupos",
-			"channels": "Canais",
-			"officialChannels": "Canais oficiais",
-			"pricing": "Preços",
+			"features": "Recursos",
+			"forGroups": "Para grupos",
+			"forChannels": "Para canais",
 			"faq": "FAQ"
-		},
-		"footer": {
-			"privacy": "Privacidade",
-			"terms": "Termos"
 		}
 	},
 	"OfficialChannels": {
-		"listHeading": "Canais oficiais de ligas",
-		"count": "{count, plural, one {# canal oficial} many {# de canais oficiais} other {# canais oficiais}}",
+		"listHeading": "Canais de ligas",
+		"count": "{count, plural, one {# canal de liga} many {# de canais de ligas} other {# canais de ligas}}",
 		"emptyTitle": "Ainda não há canais para mostrar",
-		"emptyBody": "A lista de canais oficiais ainda não foi publicada no site. Abra o LiveScoreAppBot no Telegram para ver as ligas e os canais dentro do app.",
+		"emptyBody": "A lista de canais de ligas ainda não foi publicada no site. Abra o LiveScoreAppBot no Telegram para ver as ligas e os canais dentro do app.",
 		"errorTitle": "A lista de canais está indisponível no momento",
-		"errorBody": "Não foi possível carregar os canais oficiais agora. A lista é atualizada automaticamente, então tente novamente em alguns minutos.",
+		"errorBody": "Não foi possível carregar os canais de ligas agora. A lista é atualizada automaticamente, então tente novamente em alguns minutos.",
 		"logoAlt": "Logo de {title}",
-		"openChannel": "{title} — abrir o canal oficial no Telegram",
-		"loading": "Carregando os canais oficiais…"
+		"openChannel": "{title} — abrir o canal no Telegram",
+		"loading": "Carregando os canais de ligas…"
 	}
 }

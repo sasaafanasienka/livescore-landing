@@ -1,45 +1,35 @@
 "use client";
 
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/react";
+import clsx from "clsx";
 import { BiMinus, BiPlus } from "react-icons/bi";
 
 import Container from "@/components/Container";
+import PageSection from "@/components/PageSection";
 import SectionTitle from "@/components/SectionTitle";
-import { Link } from "@/i18n/navigation";
 import type { HomeFaqItem } from "@/lib/home-copy";
+import { renderRichText } from "@/lib/rich-text";
 
 type Props = {
 	title: string;
 	description: string;
-	moreLink: string;
 	items: HomeFaqItem[];
 };
 
-export default function FaqAccordion({
-	title,
-	description,
-	moreLink,
-	items,
-}: Props) {
+export default function FaqAccordion({ title, description, items }: Props) {
 	return (
-		<section id="faq" className="py-10 lg:py-20">
+		<PageSection id="faq" className="scroll-mt-24">
 			<Container>
 				<div className="flex flex-col gap-10 lg:flex-row">
 					<div className="lg:max-w-sm">
 						<SectionTitle>
-							<h2 className="my-3 text-center !leading-snug lg:text-start">
+							<h2 className="my-3 text-start">
 								{title}
 							</h2>
 						</SectionTitle>
-						<p className="text-center text-foreground-accent lg:mt-4 lg:text-start">
+						<p className="text-start text-foreground-accent lg:mt-4">
 							{description}
 						</p>
-						<Link
-							href="/faq"
-							className="mt-4 block text-center font-medium text-secondary underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary lg:text-start"
-						>
-							{moreLink}
-						</Link>
 					</div>
 
 					<div className="w-full border-b lg:max-w-2xl lg:mx-auto">
@@ -48,7 +38,7 @@ export default function FaqAccordion({
 								<Disclosure>
 									{({ open }) => (
 										<>
-											<DisclosureButton className="flex w-full items-center justify-between border-t px-4 pt-7 text-start text-lg">
+											<DisclosureButton className="flex w-full items-center justify-between border-t pt-7 text-start text-lg">
 												<span className="pe-4 text-xl font-semibold md:text-2xl">
 													{item.question}
 												</span>
@@ -58,8 +48,14 @@ export default function FaqAccordion({
 													<BiPlus className="h-5 w-5 shrink-0 text-secondary" />
 												)}
 											</DisclosureButton>
-											<DisclosurePanel className="px-4 pb-2 pt-4 text-foreground-accent">
-												{item.answer}
+											<DisclosurePanel
+												static
+												className={clsx(
+													"pb-2 pt-4 text-foreground-accent",
+													!open && "hidden",
+												)}
+											>
+												{renderRichText(item.answer)}
 											</DisclosurePanel>
 										</>
 									)}
@@ -69,6 +65,6 @@ export default function FaqAccordion({
 					</div>
 				</div>
 			</Container>
-		</section>
+		</PageSection>
 	);
 }

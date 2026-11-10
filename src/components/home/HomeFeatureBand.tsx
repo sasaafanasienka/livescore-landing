@@ -2,6 +2,7 @@ import Image from "next/image";
 import clsx from "clsx";
 
 import Container from "@/components/Container";
+import PageSection from "@/components/PageSection";
 import SectionTitle from "@/components/SectionTitle";
 
 type Props = {
@@ -25,15 +26,15 @@ export default function HomeFeatureBand({
 	imageAtRight = true,
 }: Props) {
 	return (
-		<section id={id} className="py-10 lg:py-20">
+		<PageSection id={id}>
 			<Container>
 				<div
 					className={clsx(
-						"flex flex-col items-center gap-10 lg:flex-row lg:gap-16",
+						"flex flex-col items-start justify-center gap-10 md:items-center lg:flex-row lg:gap-16",
 						!imageAtRight && "lg:flex-row-reverse",
 					)}
 				>
-					<div className="w-full max-w-xl text-center lg:text-start">
+					<div className="w-full text-start lg:max-w-md">
 						<SectionTitle>
 							<h2 className="mb-4">{title}</h2>
 						</SectionTitle>
@@ -61,6 +62,6 @@ export default function HomeFeatureBand({
 					</div>
 				</div>
 			</Container>
-		</section>
+		</PageSection>
 	);
 }

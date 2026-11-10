@@ -1,25 +1,23 @@
 import { IMenuItem } from "@/types";
 
-/** Primary shell nav — locked sitemap targets (locale prefix via next-intl Link). */
+/** Home-only shell nav — in-page anchors (+ optional tab query). */
 export const menuItems: IMenuItem[] = [
 	{
-		text: "groups",
-		url: "/guide/groups",
+		text: "features",
+		hash: "features",
 	},
 	{
-		text: "channels",
-		url: "/guide/channels",
+		text: "forGroups",
+		hash: "how-it-works",
+		query: { how: "groups" },
 	},
 	{
-		text: "officialChannels",
-		url: "/official-channels",
-	},
-	{
-		text: "pricing",
-		url: "/pricing",
+		text: "forChannels",
+		hash: "how-it-works",
+		query: { how: "channels" },
 	},
 	{
 		text: "faq",
-		url: "/faq",
+		hash: "faq",
 	},
 ];

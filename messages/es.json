@@ -1,32 +1,31 @@
 {
 	"Brand": {
-		"name": "Live Score"
+		"name": "Fútbol. LIVE"
 	},
 	"Shell": {
-		"cta": "Abrir LiveScoreAppBot",
-		"placeholder": "Marcadores de fútbol en vivo y actualizaciones de partidos por Telegram.",
+		"cta": "Abrir bot",
+		"ctaAddToGroup": "Añadir bot al grupo",
+		"getStarted": "Empezar",
+		"language": "Idioma",
 		"navHome": "Inicio",
+		"privacy": "Privacidad",
+		"terms": "Términos",
 		"nav": {
-			"groups": "Grupos",
-			"channels": "Canales",
-			"officialChannels": "Canales oficiales",
-			"pricing": "Precios",
+			"features": "Funciones",
+			"forGroups": "Para grupos",
+			"forChannels": "Para canales",
 			"faq": "FAQ"
-		},
-		"footer": {
-			"privacy": "Privacidad",
-			"terms": "Términos"
 		}
 	},
 	"OfficialChannels": {
-		"listHeading": "Canales oficiales de ligas",
-		"count": "{count, plural, one {# canal oficial} many {# de canales oficiales} other {# canales oficiales}}",
+		"listHeading": "Canales de ligas",
+		"count": "{count, plural, one {# canal de liga} many {# de canales de ligas} other {# canales de ligas}}",
 		"emptyTitle": "Todavía no hay canales que mostrar",
-		"emptyBody": "La lista de canales oficiales aún no está publicada en el sitio. Abre LiveScoreAppBot en Telegram para ver las ligas y los canales dentro de la app.",
+		"emptyBody": "La lista de canales de ligas aún no está publicada en el sitio. Abre LiveScoreAppBot en Telegram para ver las ligas y los canales dentro de la app.",
 		"errorTitle": "La lista de canales no está disponible por el momento",
-		"errorBody": "No pudimos cargar los canales oficiales ahora mismo. La lista se actualiza automáticamente, así que vuelve a intentarlo en unos minutos.",
+		"errorBody": "No pudimos cargar los canales de ligas ahora mismo. La lista se actualiza automáticamente, así que vuelve a intentarlo en unos minutos.",
 		"logoAlt": "Logotipo de {title}",
-		"openChannel": "{title} — abrir el canal oficial en Telegram",
-		"loading": "Cargando los canales oficiales…"
+		"openChannel": "{title} — abrir el canal en Telegram",
+		"loading": "Cargando los canales de ligas…"
 	}
 }

@@ -1,32 +1,31 @@
 {
 	"Brand": {
-		"name": "Live Score"
+		"name": "Football. LIVE"
 	},
 	"Shell": {
-		"cta": "Ouvrir LiveScoreAppBot",
-		"placeholder": "Scores de football en direct et mises à jour des matchs via Telegram.",
+		"cta": "Ouvrir le bot",
+		"ctaAddToGroup": "Ajouter le bot au groupe",
+		"getStarted": "Commencer",
+		"language": "Langue",
 		"navHome": "Accueil",
+		"privacy": "Confidentialité",
+		"terms": "Conditions",
 		"nav": {
-			"groups": "Groupes",
-			"channels": "Chaînes",
-			"officialChannels": "Chaînes officielles",
-			"pricing": "Tarifs",
+			"features": "Fonctionnalités",
+			"forGroups": "Pour les groupes",
+			"forChannels": "Pour les chaînes",
 			"faq": "FAQ"
-		},
-		"footer": {
-			"privacy": "Confidentialité",
-			"terms": "Conditions"
 		}
 	},
 	"OfficialChannels": {
-		"listHeading": "Chaînes officielles de ligues",
-		"count": "{count, plural, one {# chaîne officielle} many {# de chaînes officielles} other {# chaînes officielles}}",
+		"listHeading": "Canaux de ligues",
+		"count": "{count, plural, one {# canal de ligue} many {# de canaux de ligues} other {# canaux de ligues}}",
 		"emptyTitle": "Aucune chaîne à afficher pour le moment",
-		"emptyBody": "La liste des chaînes officielles n’est pas encore publiée sur le site. Ouvrez LiveScoreAppBot sur Telegram pour voir les ligues et les chaînes dans l’application.",
+		"emptyBody": "La liste des canaux de ligues n’est pas encore publiée sur le site. Ouvrez LiveScoreAppBot sur Telegram pour voir les ligues et les chaînes dans l’application.",
 		"errorTitle": "La liste des chaînes est momentanément indisponible",
-		"errorBody": "Nous n’avons pas pu charger les chaînes officielles à l’instant. La liste se met à jour automatiquement : réessayez dans quelques minutes.",
+		"errorBody": "Nous n’avons pas pu charger les canaux de ligues à l’instant. La liste se met à jour automatiquement : réessayez dans quelques minutes.",
 		"logoAlt": "Logo de {title}",
-		"openChannel": "{title} — ouvrir la chaîne officielle sur Telegram",
-		"loading": "Chargement des chaînes officielles…"
+		"openChannel": "{title} — ouvrir le canal sur Telegram",
+		"loading": "Chargement des canaux de ligues…"
 	}
 }

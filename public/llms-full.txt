@@ -1,10 +1,12 @@
-# Live Score — full LLM summary
+# Football. LIVE — full LLM summary
 
 > Expanded claim-safe product and marketing-route summary for LLM agents. Canonical host: https://football-live-bot.online. Companion brief: https://football-live-bot.online/llms.txt
 
 ## Product
 
-Live Score is a Telegram product: LiveScoreAppBot delivers football match notifications, with a Mini App for browsing matches, managing favourites, and configuring notification preferences.
+Football. LIVE is a Telegram product: LiveScoreAppBot delivers football match notifications, with a Mini App for browsing matches, managing favourites, and configuring notification preferences.
+
+Localized brand names (LIVE never translated): Football. LIVE (en/fr/ar), Футбол. LIVE (ru), Fútbol. LIVE (es), Futebol. LIVE (pt). Public bot username: LiveScoreAppBot (no @).
 
 Surfaces:
 
@@ -12,9 +14,9 @@ Surfaces:
 - Groups — registered chat profiles; notifications into the group
 - Channels — registered chat profiles; notifications into the channel
 - Mini App — matches, favourites, settings, start/team pick, official league channels list; Chat Premium for group/channel actors
-- Official league channels — discoverable app-owner Telegram publics (not user-registered notification profiles)
+- Official league channels — discoverable app-owner Telegram publics (live list on each locale home; not user-registered notification profiles)
 
-Public bot username: LiveScoreAppBot (no @). Bot URL: https://t.me/LiveScoreAppBot
+Bot URL: https://t.me/LiveScoreAppBot
 
 ## Audiences and Premium (claim-safe)
 
@@ -29,72 +31,18 @@ Shipped notification types include goal, goal scorer, final, highlight, kickoff,
 
 ## Marketing site
 
-Static Next.js marketing site for Live Score. Locales in URL paths: `ar`, `en`, `es`, `fr`, `pt`, `ru`. Locked indexable routes below (8 routes × 6 locales). `official-channels` is indexable even when live channel data is not yet wired on the public site.
+Static Next.js marketing site for Football. LIVE. Crawl surface is six locale homes only (`ar`, `en`, `es`, `fr`, `pt`, `ru`). Privacy and Terms link to Telegram’s policies (external).
 
-## Absolute locale routes
+## Absolute locale homes
 
-### English (`en`)
+- [English](https://football-live-bot.online/en)
+- [Arabic](https://football-live-bot.online/ar)
+- [Spanish](https://football-live-bot.online/es)
+- [French](https://football-live-bot.online/fr)
+- [Portuguese](https://football-live-bot.online/pt)
+- [Russian](https://football-live-bot.online/ru)
 
-- [Home](https://football-live-bot.online/en)
-- [Groups guide](https://football-live-bot.online/en/guide/groups)
-- [Channels guide](https://football-live-bot.online/en/guide/channels)
-- [Official channels](https://football-live-bot.online/en/official-channels)
-- [Pricing](https://football-live-bot.online/en/pricing)
-- [FAQ](https://football-live-bot.online/en/faq)
-- [Privacy](https://football-live-bot.online/en/privacy)
-- [Terms](https://football-live-bot.online/en/terms)
+## Legal (external)
 
-### Arabic (`ar`)
-
-- [Home](https://football-live-bot.online/ar)
-- [Groups guide](https://football-live-bot.online/ar/guide/groups)
-- [Channels guide](https://football-live-bot.online/ar/guide/channels)
-- [Official channels](https://football-live-bot.online/ar/official-channels)
-- [Pricing](https://football-live-bot.online/ar/pricing)
-- [FAQ](https://football-live-bot.online/ar/faq)
-- [Privacy](https://football-live-bot.online/ar/privacy)
-- [Terms](https://football-live-bot.online/ar/terms)
-
-### Spanish (`es`)
-
-- [Home](https://football-live-bot.online/es)
-- [Groups guide](https://football-live-bot.online/es/guide/groups)
-- [Channels guide](https://football-live-bot.online/es/guide/channels)
-- [Official channels](https://football-live-bot.online/es/official-channels)
-- [Pricing](https://football-live-bot.online/es/pricing)
-- [FAQ](https://football-live-bot.online/es/faq)
-- [Privacy](https://football-live-bot.online/es/privacy)
-- [Terms](https://football-live-bot.online/es/terms)
-
-### French (`fr`)
-
-- [Home](https://football-live-bot.online/fr)
-- [Groups guide](https://football-live-bot.online/fr/guide/groups)
-- [Channels guide](https://football-live-bot.online/fr/guide/channels)
-- [Official channels](https://football-live-bot.online/fr/official-channels)
-- [Pricing](https://football-live-bot.online/fr/pricing)
-- [FAQ](https://football-live-bot.online/fr/faq)
-- [Privacy](https://football-live-bot.online/fr/privacy)
-- [Terms](https://football-live-bot.online/fr/terms)
-
-### Portuguese (`pt`)
-
-- [Home](https://football-live-bot.online/pt)
-- [Groups guide](https://football-live-bot.online/pt/guide/groups)
-- [Channels guide](https://football-live-bot.online/pt/guide/channels)
-- [Official channels](https://football-live-bot.online/pt/official-channels)
-- [Pricing](https://football-live-bot.online/pt/pricing)
-- [FAQ](https://football-live-bot.online/pt/faq)
-- [Privacy](https://football-live-bot.online/pt/privacy)
-- [Terms](https://football-live-bot.online/pt/terms)
-
-### Russian (`ru`)
-
-- [Home](https://football-live-bot.online/ru)
-- [Groups guide](https://football-live-bot.online/ru/guide/groups)
-- [Channels guide](https://football-live-bot.online/ru/guide/channels)
-- [Official channels](https://football-live-bot.online/ru/official-channels)
-- [Pricing](https://football-live-bot.online/ru/pricing)
-- [FAQ](https://football-live-bot.online/ru/faq)
-- [Privacy](https://football-live-bot.online/ru/privacy)
-- [Terms](https://football-live-bot.online/ru/terms)
+- [Privacy](https://telegram.org/privacy-tpa)
+- [Terms (Mini Apps)](https://telegram.org/tos/mini-apps)

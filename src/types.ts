@@ -1,6 +1,7 @@
 export interface IMenuItem {
-    text: string;
-    url: string;
+	text: string;
+	hash: string;
+	query?: Record<string, string>;
 }
 
 export interface IBenefit {

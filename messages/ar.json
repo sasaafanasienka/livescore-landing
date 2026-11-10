@@ -1,32 +1,31 @@
 {
 	"Brand": {
-		"name": "Live Score"
+		"name": "Football. LIVE"
 	},
 	"Shell": {
-		"cta": "افتح LiveScoreAppBot",
-		"placeholder": "نتائج كرة القدم المباشرة وتحديثات المباريات عبر تيليجرام.",
+		"cta": "افتح البوت",
+		"ctaAddToGroup": "إضافة البوت إلى مجموعة",
+		"getStarted": "ابدأ",
+		"language": "اللغة",
 		"navHome": "الرئيسية",
+		"privacy": "الخصوصية",
+		"terms": "الشروط",
 		"nav": {
-			"groups": "المجموعات",
-			"channels": "القنوات",
-			"officialChannels": "القنوات الرسمية",
-			"pricing": "الأسعار",
+			"features": "الميزات",
+			"forGroups": "للمجموعات",
+			"forChannels": "للقنوات",
 			"faq": "الأسئلة الشائعة"
-		},
-		"footer": {
-			"privacy": "الخصوصية",
-			"terms": "الشروط"
 		}
 	},
 	"OfficialChannels": {
-		"listHeading": "القنوات الرسمية للدوريات",
-		"count": "{count, plural, zero {لا توجد قنوات رسمية} one {قناة رسمية واحدة} two {قناتان رسميتان} few {# قنوات رسمية} many {# قناة رسمية} other {# قناة رسمية}}",
+		"listHeading": "قنوات الدوريات",
+		"count": "{count, plural, zero {لا توجد قنوات دوريات} one {قناة دوري واحدة} two {قناتان للدوريات} few {# قنوات دوريات} many {# قناة دوري} other {# قناة دوري}}",
 		"emptyTitle": "لا توجد قنوات لعرضها بعد",
-		"emptyBody": "لم تُنشر قائمة القنوات الرسمية على الموقع بعد. افتح LiveScoreAppBot على Telegram لرؤية الدوريات والقنوات داخل التطبيق.",
+		"emptyBody": "لم تُنشر قائمة قنوات الدوريات على الموقع بعد. افتح LiveScoreAppBot على Telegram لرؤية الدوريات والقنوات داخل التطبيق.",
 		"errorTitle": "قائمة القنوات غير متاحة مؤقتًا",
-		"errorBody": "تعذّر تحميل القنوات الرسمية الآن. تُحدَّث القائمة تلقائيًا، لذا حاول مرة أخرى بعد بضع دقائق.",
+		"errorBody": "تعذّر تحميل قنوات الدوريات الآن. تُحدَّث القائمة تلقائيًا، لذا حاول مرة أخرى بعد بضع دقائق.",
 		"logoAlt": "شعار {title}",
-		"openChannel": "{title} — افتح القناة الرسمية على Telegram",
-		"loading": "جارٍ تحميل القنوات الرسمية…"
+		"openChannel": "{title} — افتح القناة على Telegram",
+		"loading": "جارٍ تحميل قنوات الدوريات…"
 	}
 }

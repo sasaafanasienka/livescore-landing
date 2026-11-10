@@ -1,23 +1,13 @@
-import { IMenuItem, ISocials } from "@/types";
+import { ISocials } from "@/types";
+import { menuItems } from "@/data/menuItems";
 
 export const footerDetails: {
-	subheading: string;
-	quickLinks: IMenuItem[];
+	quickLinks: typeof menuItems;
 	email: string;
 	telephone: string;
 	socials: ISocials;
 } = {
-	subheading: "Live football scores and match updates via Telegram.",
-	quickLinks: [
-		{
-			text: "privacy",
-			url: "/privacy",
-		},
-		{
-			text: "terms",
-			url: "/terms",
-		},
-	],
+	quickLinks: menuItems,
 	email: "",
 	telephone: "",
 	socials: {},

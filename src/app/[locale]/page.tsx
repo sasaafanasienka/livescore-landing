@@ -8,7 +8,9 @@ import HomeLanding from "@/components/home/HomeLanding";
 import JsonLdScript from "@/components/JsonLdScript";
 import { routing } from "@/i18n/routing";
 import { MARKETING_PAGES } from "@/lib/content";
+import { getHomeCopy } from "@/lib/home-copy";
 import {
+	faqPageJsonLd,
 	organizationJsonLd,
 	softwareApplicationJsonLd,
 } from "@/lib/seo-jsonld";
@@ -20,11 +22,10 @@ type Props = {
 };
 
 /**
- * Home embeds the official-channels server fetch (env-dependent mode), so the
- * page must render per request instead of baking a degraded/live state into
- * the build artifact — same rationale as `/{locale}/official-channels`.
+ * Home embeds the official-channels fetch (revalidate 300 on that data path).
+ * ISR keeps the marketing shell cacheable while channel list stays fresh.
  */
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 /** Home → MARKETING_SITEMAP urlPath `""`. */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -45,10 +46,16 @@ export default async function LocaleHomePage({ params }: Props) {
 		notFound();
 	}
 
+	const copy = await getHomeCopy(params.locale);
+
 	return (
 		<>
 			<JsonLdScript
-				data={[organizationJsonLd(), softwareApplicationJsonLd()]}
+				data={[
+					organizationJsonLd(),
+					softwareApplicationJsonLd(),
+					faqPageJsonLd(copy.faq.items),
+				]}
 			/>
 			<HomeLanding locale={params.locale} />
 		</>

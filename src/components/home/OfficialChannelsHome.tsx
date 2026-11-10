@@ -13,9 +13,6 @@ function channelInitial(title: string): string {
 	return first ? first.toUpperCase() : "?";
 }
 
-const LINK_CLASSES =
-	"rounded text-base font-medium text-secondary underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary";
-
 const CTA_CLASSES =
 	"text-black bg-primary hover:bg-primary-accent inline-block rounded-full px-6 py-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary";
 
@@ -49,7 +46,7 @@ type Props = {
 };
 
 /**
- * Streamed list/carousel/degraded panel only — section heading lives outside
+ * Streamed list/grid/degraded panel only — section heading lives outside
  * Suspense in HomeLanding (same shell-outside pattern as /official-channels).
  */
 export default async function OfficialChannelsHome({ locale }: Props) {
@@ -60,7 +57,7 @@ export default async function OfficialChannelsHome({ locale }: Props) {
 	return (
 		<div
 			data-mode={mode}
-			className="mx-auto w-full max-w-5xl text-start"
+			className="mx-auto w-full max-w-6xl text-start"
 		>
 			{mode === "error" ? (
 				<ChannelStatePanel title={t("errorTitle")} body={t("errorBody")}>
@@ -76,18 +73,18 @@ export default async function OfficialChannelsHome({ locale }: Props) {
 			) : items.length === 0 ? (
 				<ChannelStatePanel title={t("emptyTitle")} body={t("emptyBody")} />
 			) : (
-				<>
-					<p className="mb-3 text-sm text-foreground-accent">
-						{t("count", { count: items.length })}
-					</p>
-					<ul className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-						{items.map((item) => (
-							<li
-								key={item.id}
-								className="flex w-64 shrink-0 snap-start items-center gap-4 rounded-2xl border border-black/5 bg-white p-4"
+				<ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+					{items.map((item) => (
+						<li key={item.id}>
+							<a
+								href={item.link}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label={t("openChannel", { title: item.title })}
+								className="flex h-full items-center gap-4 rounded-2xl border border-black/5 bg-white p-4 text-black transition-colors hover:border-black/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
 							>
 								{item.logo ? (
-									// eslint-disable-next-line @next/next/no-img-element -- upstream logos are arbitrary t.me hosts
+									// eslint-disable-next-line @next/next/no-img-element -- upstream logos are arbitrary hosts
 									<img
 										src={item.logo}
 										alt={t("logoAlt", { title: item.title })}
@@ -100,24 +97,18 @@ export default async function OfficialChannelsHome({ locale }: Props) {
 								) : (
 									<span
 										aria-hidden="true"
-										className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-hero-background text-lg font-semibold text-foreground-accent"
+										className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-hero-background text-lg font-semibold text-black"
 									>
 										{channelInitial(item.title)}
 									</span>
 								)}
-								<a
-									href={item.link}
-									target="_blank"
-									rel="noopener noreferrer"
-									aria-label={t("openChannel", { title: item.title })}
-									className={LINK_CLASSES}
-								>
+								<span className="text-base font-medium text-black">
 									{item.title}
-								</a>
-							</li>
-						))}
-					</ul>
-				</>
+								</span>
+							</a>
+						</li>
+					))}
+				</ul>
 			)}
 		</div>
 	);

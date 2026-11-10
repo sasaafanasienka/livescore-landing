@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { Inter } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -9,9 +8,8 @@ import type { ReactNode } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { siteDetails } from "@/data/siteDetails";
+import { fontHeading, fontSans } from "@/lib/fonts";
 import { routing } from "@/i18n/routing";
-
-const inter = Inter({ subsets: ["latin"] });
 
 type Props = {
 	children: ReactNode;
@@ -26,6 +24,9 @@ export const metadata: Metadata = {
 	metadataBase: new URL(siteDetails.siteUrl),
 	title: siteDetails.metadata.title,
 	description: siteDetails.metadata.description,
+	verification: {
+		google: siteDetails.googleSiteVerification,
+	},
 	openGraph: {
 		title: siteDetails.metadata.title,
 		description: siteDetails.metadata.description,
@@ -33,9 +34,9 @@ export const metadata: Metadata = {
 		type: "website",
 		images: [
 			{
-				url: "/images/og-image.jpg",
+				url: "/images/og-en.jpg",
 				width: 1200,
-				height: 675,
+				height: 630,
 				alt: siteDetails.siteName,
 			},
 		],
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
 		card: "summary_large_image",
 		title: siteDetails.metadata.title,
 		description: siteDetails.metadata.description,
-		images: ["/images/twitter-image.jpg"],
+		images: ["/images/og-en.jpg"],
 	},
 };
 
@@ -62,7 +63,9 @@ export default async function LocaleLayout({ children, params }: Props) {
 
 	return (
 		<html lang={locale} dir={dir}>
-			<body className={`${inter.className} antialiased`}>
+			<body
+				className={`${fontSans.variable} ${fontHeading.variable} ${fontSans.className} antialiased`}
+			>
 				<NextIntlClientProvider messages={messages}>
 					{siteDetails.googleAnalyticsId && (
 						<GoogleAnalytics gaId={siteDetails.googleAnalyticsId} />

@@ -95,6 +95,42 @@ function isHttpUrl(value: string): boolean {
 	return /^https?:\/\//i.test(value);
 }
 
+/** Absolute http(s) origin for relative upstream logos (`/uploads/...`). */
+function officialChannelsAssetOrigin(): string {
+	const raw = process.env.OFFICIAL_CHANNELS_ASSET_ORIGIN?.trim();
+	if (raw && isHttpUrl(raw)) {
+		return raw.replace(/\/+$/, "");
+	}
+
+	const apiUrl = process.env.OFFICIAL_CHANNELS_API_URL?.trim();
+	if (!apiUrl) {
+		return "";
+	}
+
+	try {
+		return new URL(apiUrl).origin;
+	} catch {
+		return "";
+	}
+}
+
+/** Keep absolute logos; prefix relative `/…` paths with the asset origin. */
+function resolveLogoUrl(logo: string, assetOrigin: string): string | null {
+	if (!logo) {
+		return null;
+	}
+
+	if (isHttpUrl(logo)) {
+		return logo;
+	}
+
+	if (logo.startsWith("/") && assetOrigin) {
+		return `${assetOrigin}${logo}`;
+	}
+
+	return null;
+}
+
 function readText(value: unknown): string {
 	return typeof value === "string" ? value.trim() : "";
 }
@@ -125,7 +161,10 @@ function readId(value: unknown): string {
  * http(s) URL. Returns `null` when the payload shape is not the contract's
  * `{ data: { items: [...] } }`.
  */
-export function normalizeOfficialChannels(payload: unknown): OfficialChannel[] | null {
+export function normalizeOfficialChannels(
+	payload: unknown,
+	assetOrigin = officialChannelsAssetOrigin(),
+): OfficialChannel[] | null {
 	if (typeof payload !== "object" || payload === null) {
 		return null;
 	}
@@ -156,12 +195,10 @@ export function normalizeOfficialChannels(payload: unknown): OfficialChannel[] |
 			continue;
 		}
 
-		const logo = readText(record.logo);
-
 		normalized.push({
 			id,
 			title,
-			logo: logo && isHttpUrl(logo) ? logo : null,
+			logo: resolveLogoUrl(readText(record.logo), assetOrigin),
 			link,
 		});
 	}

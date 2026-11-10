@@ -1,95 +1,82 @@
-"use client";
-
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
-import clsx from "clsx";
-
 import Container from "@/components/Container";
+import PageSection from "@/components/PageSection";
 import SectionTitle from "@/components/SectionTitle";
-import { Link } from "@/i18n/navigation";
-import type { HomePricingPanel } from "@/lib/home-copy";
+import type { HomePricingRow } from "@/lib/home-copy";
 
 type Props = {
 	title: string;
 	description: string;
-	moreLink: string;
-	personal: HomePricingPanel;
-	chats: HomePricingPanel;
+	freeColumn: string;
+	premiumColumn: string;
+	rows: HomePricingRow[];
 };
 
-function PricingPanel({ panel }: { panel: HomePricingPanel }) {
-	return (
-		<div className="rounded-2xl bg-white p-6 text-start md:p-8">
-			<h3 className="mb-3 text-2xl font-semibold">{panel.title}</h3>
-			<p className="mb-6 text-foreground-accent">{panel.body}</p>
-			<ul className="flex flex-col gap-3">
-				{panel.points.map((point) => (
-					<li
-						key={point}
-						className="border-s-2 border-primary ps-4 leading-relaxed"
-					>
-						{point}
-					</li>
-				))}
-			</ul>
-		</div>
-	);
-}
-
+/** Groups/channels Free vs Premium comparison — claim-safe catalog facts only. */
 export default function PricingTabs({
 	title,
 	description,
-	moreLink,
-	personal,
-	chats,
+	freeColumn,
+	premiumColumn,
+	rows,
 }: Props) {
-	const panels = [personal, chats];
-
 	return (
-		<section id="pricing" className="py-10 lg:py-20">
+		<PageSection id="pricing" className="scroll-mt-24">
 			<Container>
-				<div className="mx-auto mb-10 max-w-2xl text-center">
+				<div className="mb-10 max-w-2xl text-start md:mx-auto md:text-center">
 					<SectionTitle>
 						<h2 className="mb-4">{title}</h2>
 					</SectionTitle>
-					<p className="mb-4 text-foreground-accent">{description}</p>
-					<Link
-						href="/pricing"
-						className="font-medium text-secondary underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
-					>
-						{moreLink}
-					</Link>
+					<p className="text-foreground-accent">{description}</p>
 				</div>
 
-				<TabGroup>
-					<TabList className="mx-auto flex max-w-xl flex-wrap justify-center gap-2">
-						{panels.map((panel) => (
-							<Tab
-								key={panel.label}
-								className={({ selected }) =>
-									clsx(
-										"rounded-full px-5 py-2 text-base font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary",
-										selected
-											? "bg-secondary text-white"
-											: "bg-hero-background text-foreground hover:bg-hero-background/80",
-									)
-								}
-							>
-								{panel.label}
-							</Tab>
-						))}
-					</TabList>
-					<TabPanels className="mx-auto mt-8 max-w-2xl">
-						{panels.map((panel) => (
-							<TabPanel
-								key={panel.label}
-								className="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
-							>
-								<PricingPanel panel={panel} />
-							</TabPanel>
-						))}
-					</TabPanels>
-				</TabGroup>
+				<div className="mx-auto max-w-3xl">
+					<table className="w-full border-collapse text-start text-base max-[540px]:block">
+						<thead className="max-[540px]:block">
+							<tr className="border-b border-black/10 max-[540px]:grid max-[540px]:grid-cols-2">
+								<th
+									scope="col"
+									className="px-3 py-3 font-semibold text-foreground max-[540px]:hidden"
+								>
+									<span className="sr-only">Feature</span>
+								</th>
+								<th
+									scope="col"
+									className="px-3 py-3 text-center font-semibold text-foreground"
+								>
+									{freeColumn}
+								</th>
+								<th
+									scope="col"
+									className="px-3 py-3 text-center font-semibold text-foreground"
+								>
+									{premiumColumn}
+								</th>
+							</tr>
+						</thead>
+						<tbody className="max-[540px]:block">
+							{rows.map((row) => (
+								<tr
+									key={row.label}
+									className="border-b border-black/5 max-[540px]:grid max-[540px]:grid-cols-2"
+								>
+									<th
+										scope="row"
+										className="px-3 py-3 font-medium text-foreground max-[540px]:col-span-2 max-[540px]:pb-1"
+									>
+										{row.label}
+									</th>
+									<td className="px-3 py-3 text-center text-foreground-accent max-[540px]:pt-0">
+										{row.free}
+									</td>
+									<td className="px-3 py-3 text-center text-foreground-accent max-[540px]:pt-0">
+										{row.premium}
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
 			</Container>
-		</section>
+		</PageSection>
 	);
 }

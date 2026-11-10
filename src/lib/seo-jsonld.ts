@@ -1,4 +1,7 @@
-import { siteDetails } from "@/data/siteDetails";
+import {
+	brandAlternateNames,
+	siteDetails,
+} from "@/data/siteDetails";
 import { stripOptionalFrontmatter } from "@/lib/content";
 
 export type FaqQaPair = {
@@ -8,9 +11,17 @@ export type FaqQaPair = {
 
 type JsonLdObject = Record<string, unknown>;
 
+const PLACEHOLDERS: Record<string, string> = {
+	botUrl: siteDetails.botUrl,
+	botChatUrl: siteDetails.botChatUrl,
+	botSettingsUrl: siteDetails.botSettingsUrl,
+	botGroupUrl: siteDetails.botGroupUrl,
+	botChannelUrl: siteDetails.botChannelUrl,
+};
+
 /**
  * Claim-safe Organization JSON-LD from siteDetails / SERVICE-CAPABILITIES.
- * Brand Live Score; sameAs = Telegram bot URL only.
+ * Canonical name Football. LIVE; sameAs = Telegram bot chat URL (not /app).
  */
 export function organizationJsonLd(): JsonLdObject {
 	return {
@@ -18,13 +29,16 @@ export function organizationJsonLd(): JsonLdObject {
 		"@type": "Organization",
 		name: siteDetails.siteName,
 		url: siteDetails.siteUrl,
-		sameAs: [siteDetails.botUrl],
+		logo: `${siteDetails.siteUrl}/images/logo.png`,
+		description: siteDetails.metadata.description,
+		sameAs: [siteDetails.botChatUrl],
+		alternateName: [...brandAlternateNames],
 	};
 }
 
 /**
  * Claim-safe SoftwareApplication JSON-LD for the Telegram football scores product.
- * Offers omitted — never personal Premium; Chat Premium is group/channel-only.
+ * Chat Premium offers are group/channel-only (49 Stars / 30 days).
  */
 export function softwareApplicationJsonLd(): JsonLdObject {
 	return {
@@ -35,17 +49,27 @@ export function softwareApplicationJsonLd(): JsonLdObject {
 		operatingSystem: "Telegram, Web",
 		url: siteDetails.siteUrl,
 		description: siteDetails.metadata.description,
+		featureList: [
+			"Football match notifications in personal Telegram chats, groups, and channels",
+			"Mini App match centre with favourites and notification settings",
+			"Official league channels list in the Mini App",
+			"Chat Premium for groups and channels: 49 Telegram Stars / 30 days",
+		],
+		offers: {
+			"@type": "Offer",
+			name: "Chat Premium",
+			description:
+				"Group and channel subscription: unlimited team or league favourites. 49 Telegram Stars for 30 days.",
+			price: "49",
+			priceCurrency: "XTR",
+		},
 	};
 }
 
 /**
- * FAQPage JSON-LD from locale FAQ markdown.
- * Parser: skip brand line; `Question?` + following answer block(s);
- * trailing CTA line without `?` is not a question.
+ * FAQPage JSON-LD from home structured FAQ items (already typograf'd when from getHomeCopy).
  */
-export function faqPageJsonLd(markdown: string): JsonLdObject {
-	const pairs = extractFaqPairs(markdown);
-
+export function faqPageJsonLd(pairs: FaqQaPair[]): JsonLdObject {
 	return {
 		"@context": "https://schema.org",
 		"@type": "FAQPage",
@@ -54,7 +78,7 @@ export function faqPageJsonLd(markdown: string): JsonLdObject {
 			name: question,
 			acceptedAnswer: {
 				"@type": "Answer",
-				text: answer,
+				text: plainFaqAnswer(answer),
 			},
 		})),
 	};
@@ -65,7 +89,22 @@ export function serializeJsonLd(data: unknown): string {
 	return JSON.stringify(data).replace(/</g, "\\u003c");
 }
 
-/** Exported for verification of FAQ Q/A extraction. */
+/**
+ * Expand `{{tokens}}` / markdown links to plain text for FAQ answers in schema.
+ */
+export function plainFaqAnswer(input: string): string {
+	return input
+		.replace(/\{\{(\w+)\}\}/g, (_, key: string) => PLACEHOLDERS[key] ?? "")
+		.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, label: string, href: string) => {
+			const token = href.match(/^\{\{(\w+)\}\}$/)?.[1];
+			const url = token ? (PLACEHOLDERS[token] ?? href) : href;
+			return url ? `${label} (${url})` : label;
+		})
+		.replace(/\s+/g, " ")
+		.trim();
+}
+
+/** Exported for verification of FAQ Q/A extraction from legacy markdown. */
 export function extractFaqPairs(markdown: string): FaqQaPair[] {
 	const body = stripOptionalFrontmatter(markdown);
 	// Blank-line blocks: brand; then `Question?\nanswer…`; trailing CTA block has no `?`.

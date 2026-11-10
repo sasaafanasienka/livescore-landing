@@ -1,4 +1,4 @@
 ---
-title: Live Score — футбольные счета и оповещения в Telegram
+title: Футбольные счета и алерты матчей в Telegram — Футбол. LIVE
 description: Настраиваемые уведомления о матчах в личных чатах, группах и каналах, плюс Mini App — через LiveScoreAppBot.
 ---

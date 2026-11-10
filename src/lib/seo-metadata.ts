@@ -5,8 +5,16 @@ import { locales, type UrlLocale } from "@/i18n/routing";
 import { getPageMarkdown } from "@/lib/content";
 import { absoluteMarketingPageUrl } from "@/lib/seo-sitemap";
 
-const META_TITLE_MAX = 70;
-const META_DESCRIPTION_MAX = 160;
+const META_TITLE_MAX = 60;
+const META_DESCRIPTION_MAX = 155;
+
+/** Per-locale OG/Twitter asset; ar falls back to en until a dedicated asset ships. */
+export function localeOgImagePath(locale: UrlLocale): string {
+	if (locale === "ar") {
+		return "/images/og-en.jpg";
+	}
+	return `/images/og-${locale}.jpg`;
+}
 
 type PageMetaFields = {
 	title?: string;
@@ -48,6 +56,7 @@ export async function marketingPageMetadata(
 	const markdown = await getPageMarkdown(locale, page);
 	const { title, description } = pageMetaTextFromMarkdown(markdown);
 	const url = absoluteMarketingPageUrl(locale, urlPath);
+	const ogImage = localeOgImagePath(locale);
 
 	return {
 		title,
@@ -59,9 +68,9 @@ export async function marketingPageMetadata(
 			type: "website",
 			images: [
 				{
-					url: "/images/og-image.jpg",
+					url: ogImage,
 					width: 1200,
-					height: 675,
+					height: 630,
 					alt: siteDetails.siteName,
 				},
 			],
@@ -70,7 +79,7 @@ export async function marketingPageMetadata(
 			card: "summary_large_image",
 			title,
 			description,
-			images: ["/images/twitter-image.jpg"],
+			images: [ogImage],
 		},
 		alternates: marketingPageAlternates(locale, urlPath),
 	};

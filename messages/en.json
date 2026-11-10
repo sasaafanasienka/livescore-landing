@@ -1,32 +1,31 @@
 {
 	"Brand": {
-		"name": "Live Score"
+		"name": "Football. LIVE"
 	},
 	"Shell": {
-		"cta": "Open LiveScoreAppBot",
-		"placeholder": "Live football scores and match updates via Telegram.",
+		"cta": "Open bot",
+		"ctaAddToGroup": "Add bot to group",
+		"getStarted": "Get Started",
+		"language": "Language",
 		"navHome": "Home",
+		"privacy": "Privacy",
+		"terms": "Terms",
 		"nav": {
-			"groups": "Groups",
-			"channels": "Channels",
-			"officialChannels": "Official channels",
-			"pricing": "Pricing",
+			"features": "Features",
+			"forGroups": "For groups",
+			"forChannels": "For channels",
 			"faq": "FAQ"
-		},
-		"footer": {
-			"privacy": "Privacy",
-			"terms": "Terms"
 		}
 	},
 	"OfficialChannels": {
-		"listHeading": "Official league channels",
-		"count": "{count, plural, one {# official channel} other {# official channels}}",
+		"listHeading": "League channels",
+		"count": "{count, plural, one {# league channel} other {# league channels}}",
 		"emptyTitle": "No channels to show yet",
-		"emptyBody": "The official channel list is not published on the site yet. Open LiveScoreAppBot on Telegram to see the leagues and channels inside the app.",
+		"emptyBody": "The league channel list is not published on the site yet. Open LiveScoreAppBot on Telegram to see the leagues and channels inside the app.",
 		"errorTitle": "The channel list is temporarily unavailable",
-		"errorBody": "We could not load the official channels just now. The list refreshes automatically, so try again in a few minutes.",
+		"errorBody": "We could not load the league channels just now. The list refreshes automatically, so try again in a few minutes.",
 		"logoAlt": "{title} logo",
-		"openChannel": "{title} — open the official channel in Telegram",
-		"loading": "Loading official channels…"
+		"openChannel": "{title} — open the channel in Telegram",
+		"loading": "Loading league channels…"
 	}
 }
