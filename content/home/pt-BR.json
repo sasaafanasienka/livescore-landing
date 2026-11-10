@@ -1,0 +1,141 @@
+{
+	"hero": {
+		"headline": "Placares e alertas de jogos no Telegram",
+		"subhead": "O Live Score envia notificações configuráveis de jogos em chats pessoais, grupos e canais — mais um Mini App para ver jogos e gerir favoritos."
+	},
+	"notifications": {
+		"title": "Notificações de jogos onde você já conversa",
+		"description": "Golos, finais e outros alertas das equipas e jogos que segue. Por predefinição prioriza golos, o resultado final e highlight; ajuste as preferências visíveis no Mini App.",
+		"bullets": [
+			"Chats pessoais para os seus favoritos — grátis, sem plano de Stars",
+			"Grupos e canais recebem notificações depois de registar o bot",
+			"Preferências configuráveis: golo, marcador, final, início, intervalo, segunda parte, 15 min antes, cartão vermelho e atraso"
+		],
+		"imageAlt": "Exemplo de notificação de jogo Live Score no Telegram"
+	},
+	"miniApp": {
+		"title": "Mini App para jogos, favoritos e definições",
+		"description": "Abra o Mini App do Telegram a partir do LiveScoreAppBot para o calendário, detalhe do jogo, favoritos e preferências de notificação.",
+		"bullets": [
+			"Jogos, ligas, equipas e separadores de detalhe (resumo, estatísticas, escalações, H2H, tabela)",
+			"Favoritos e definições para chats pessoais, grupos e canais",
+			"Lista de canais oficiais de ligas dentro da app"
+		],
+		"imageAlt": "Ecrã de jogos do Mini App Live Score"
+	},
+	"howItWorks": {
+		"title": "Como funciona",
+		"description": "Três audiências, um bot. Escolha o caminho — os passos correspondem ao que o LiveScoreAppBot oferece hoje.",
+		"tabs": [
+			{
+				"id": "personal",
+				"label": "Pessoal",
+				"steps": [
+					"Abra um chat privado com o LiveScoreAppBot e envie /start",
+					"Veja os alertas de demo e abra o Mini App para escolher equipas e favoritos",
+					"Ajuste as preferências em Definições do Mini App; envie /stop a qualquer momento para pausar a entrega pessoal"
+				]
+			},
+			{
+				"id": "groups",
+				"label": "Grupos",
+				"steps": [
+					"Num chat privado com o bot, envie /group",
+					"Partilhe um grupo onde você e o bot tenham os direitos de admin necessários",
+					"Abra os links do Mini App do grupo para favoritos, definições ou Chat Premium se precisar de mais do que um favorito de equipa ou liga"
+				]
+			},
+			{
+				"id": "channels",
+				"label": "Canais",
+				"steps": [
+					"Num chat privado com o bot, envie /channel",
+					"Partilhe um canal com os direitos de publicação necessários para o bot enviar alertas",
+					"Gira favoritos e definições no Mini App do canal; o Chat Premium desbloqueia mais do que um favorito de equipa ou liga"
+				]
+			}
+		]
+	},
+	"pricing": {
+		"title": "Preços",
+		"description": "O uso pessoal continua grátis. Grupos e canais têm uma quota gratuita de favoritos; Chat Premium com Stars é opcional.",
+		"moreLink": "Página completa de preços",
+		"personal": {
+			"label": "Pessoal",
+			"title": "Grátis para chats pessoais",
+			"body": "Perfis pessoais não têm plano de Stars nem checkout de Chat Premium. Os alertas de favoritos configuram-se sem upgrade.",
+			"points": [
+				"Uso pessoal ilimitado — sem Stars",
+				"Favoritos: jogos e equipas (ligas favoritas pessoais não são oferecidas)",
+				"Sem upgrade de Stars para chats pessoais"
+			]
+		},
+		"chats": {
+			"label": "Grupos e canais",
+			"title": "Nível grátis + Chat Premium",
+			"body": "Grupos e canais registados começam grátis com um favorito combinado de equipa ou liga. O Chat Premium desbloqueia mais favoritos.",
+			"points": [
+				"Grátis: 1 favorito de equipa ou liga por chat registado",
+				"Chat Premium: 49 Telegram Stars por 30 dias",
+				"24 horas de carência após o fim; jogos favoritos não entram nessa quota",
+				"O checkout Premium é só do proprietário no Mini App"
+			]
+		}
+	},
+	"channels": {
+		"title": "Canais oficiais de ligas",
+		"description": "Siga canais públicos do Telegram do proprietário da app por liga. Esta lista é distinta dos canais de notificação que regista com /channel.",
+		"seeAll": "Ver todos os canais oficiais"
+	},
+	"faq": {
+		"title": "FAQ",
+		"description": "Respostas curtas com base no que o Live Score oferece hoje.",
+		"moreLink": "FAQ completo",
+		"items": [
+			{
+				"question": "O que é o Live Score?",
+				"answer": "Um produto de futebol no Telegram: o LiveScoreAppBot envia notificações de jogos e um Mini App permite ver jogos e gerir favoritos."
+			},
+			{
+				"question": "Para quem é?",
+				"answer": "Chats pessoais, grupos e canais do Telegram. Cada audiência regista-se e recebe alertas pelo mesmo bot."
+			},
+			{
+				"question": "O uso pessoal é grátis?",
+				"answer": "Sim. Chats pessoais não têm plano de Stars nem Chat Premium. Os alertas de favoritos configuram-se sem upgrade."
+			},
+			{
+				"question": "Como ligo um grupo?",
+				"answer": "Abra um chat privado com o LiveScoreAppBot, envie /group e partilhe um grupo onde você e o bot tenham os direitos de admin necessários. O registo ainda pode falhar por tipo, direitos, acesso ou conflitos."
+			},
+			{
+				"question": "Como ligo um canal?",
+				"answer": "O mesmo fluxo com /channel a partir de um chat privado, partilhando um canal com direitos de publicação. Canais de notificação do utilizador são distintos dos canais oficiais de ligas."
+			},
+			{
+				"question": "O que é o Chat Premium?",
+				"answer": "Uma subscrição opcional com Stars só para grupos e canais registados: 49 Stars por 30 dias com 24 horas de carência após o fim. No nível grátis fica um favorito combinado de equipa ou liga."
+			},
+			{
+				"question": "O que posso configurar nas notificações?",
+				"answer": "Os interruptores visíveis do Mini App cobrem golo, marcador, final, início, intervalo, segunda parte, 15 min antes, cartão vermelho e uma opção curta de atraso. Por predefinição prioriza golos, finais e highlight (o interruptor de highlight não aparece em Definições)."
+			},
+			{
+				"question": "O que é o Mini App?",
+				"answer": "A WebApp do Telegram aberta a partir do bot: calendário de jogos, detalhe, favoritos, definições, escolha de equipa/liga e a lista de canais oficiais de ligas."
+			},
+			{
+				"question": "O que são canais oficiais de ligas?",
+				"answer": "Canais públicos do Telegram do proprietário da app Live Score para descoberta. Não são os perfis de notificação que regista com /channel."
+			},
+			{
+				"question": "Como paro os alertas pessoais?",
+				"answer": "Envie /stop no Telegram (ou use o caminho de cancelamento). Pode reativar mais tarde com /start ou a partir do Mini App."
+			}
+		]
+	},
+	"closingCta": {
+		"heading": "Comece com o LiveScoreAppBot",
+		"subheading": "Abra o bot no Telegram para alertas pessoais, registo de grupos e canais, e o Mini App."
+	}
+}

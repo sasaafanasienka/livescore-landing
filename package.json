@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "check:official-channels": "pnpm dlx tsx scripts/contracts/official-channels.contract.ts"
+    "check:official-channels": "pnpm dlx tsx scripts/contracts/official-channels.contract.ts",
+    "check:home-claims": "node scripts/check-home-claims.mjs",
+    "check:home-landing": "pnpm dlx tsx scripts/contracts/home-landing.contract.ts"
   },
   "dependencies": {
     "@headlessui/react": "^2.1.8",

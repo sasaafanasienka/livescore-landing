@@ -1,0 +1,141 @@
+{
+	"hero": {
+		"headline": "Football scores and match alerts in Telegram",
+		"subhead": "Live Score delivers configurable match notifications in personal chats, groups, and channels — plus a Mini App to browse matches and manage favourites."
+	},
+	"notifications": {
+		"title": "Match notifications where you already chat",
+		"description": "Get goals, finals, and other alerts for the teams and fixtures you follow. Defaults favour goals, full-time results, and highlight; you can tune the visible prefs in the Mini App.",
+		"bullets": [
+			"Personal DMs for your favourites — free, no Stars plan",
+			"Groups and channels receive chat notifications after you register the bot",
+			"Configurable prefs: goals, goal scorer, final, kickoff, half-time, second half, pre-match 15, red card, and delay"
+		],
+		"imageAlt": "Live Score match notification example in Telegram"
+	},
+	"miniApp": {
+		"title": "Mini App for matches, favourites, and settings",
+		"description": "Open the Telegram Mini App from LiveScoreAppBot to browse the calendar, open match detail, manage favourites, and configure notification prefs.",
+		"bullets": [
+			"Matches, leagues, teams, and match detail tabs (overview, statistics, lineups, H2H, table)",
+			"Favourites and settings for personal chats, groups, and channels",
+			"Official league channels list inside the app"
+		],
+		"imageAlt": "Live Score Mini App matches screen"
+	},
+	"howItWorks": {
+		"title": "How it works",
+		"description": "Three audiences, one bot. Pick your path — steps match what LiveScoreAppBot ships today.",
+		"tabs": [
+			{
+				"id": "personal",
+				"label": "Personal",
+				"steps": [
+					"Open a private chat with LiveScoreAppBot and send /start",
+					"See demo alerts, then open the Mini App to pick teams and favourites",
+					"Tune notification prefs in Mini App Settings; send /stop anytime to pause personal delivery"
+				]
+			},
+			{
+				"id": "groups",
+				"label": "Groups",
+				"steps": [
+					"In a private chat with the bot, send /group",
+					"Share a group where you and the bot have the required admin rights",
+					"Open the group Mini App links for favourites, settings, or Chat Premium when you need more than one team or league favourite"
+				]
+			},
+			{
+				"id": "channels",
+				"label": "Channels",
+				"steps": [
+					"In a private chat with the bot, send /channel",
+					"Share a channel with the required post rights so the bot can deliver alerts",
+					"Manage favourites and settings in the channel Mini App; Chat Premium unlocks more than one team or league favourite"
+				]
+			}
+		]
+	},
+	"pricing": {
+		"title": "Pricing",
+		"description": "Personal use stays free. Groups and channels get a free favourite quota; Chat Premium is optional Stars for chats that need more.",
+		"moreLink": "Full pricing page",
+		"personal": {
+			"label": "Personal",
+			"title": "Free for personal chats",
+			"body": "Personal profiles have no Stars plan and no chat Premium checkout. Favourites alerts stay configurable without an upgrade.",
+			"points": [
+				"Unlimited personal use — no Stars required",
+				"Favourites: fixtures and teams (personal league favourites are not offered)",
+				"No Stars upgrade for personal chats"
+			]
+		},
+		"chats": {
+			"label": "Groups & channels",
+			"title": "Free tier + Chat Premium",
+			"body": "Registered groups and channels start free with one combined team or league favourite. Chat Premium unlocks more favourites.",
+			"points": [
+				"Free: 1 team or league favourite per registered chat",
+				"Chat Premium: 49 Telegram Stars for 30 days",
+				"24-hour grace after lapse; fixture favourites are not part of that quota",
+				"Premium checkout is owner-only in the Mini App"
+			]
+		}
+	},
+	"channels": {
+		"title": "Official league channels",
+		"description": "Follow app-owner Telegram channels for leagues. This list is separate from user-registered notification channels via /channel.",
+		"seeAll": "See all official channels"
+	},
+	"faq": {
+		"title": "FAQ",
+		"description": "Short answers grounded in what Live Score ships today.",
+		"moreLink": "Full FAQ",
+		"items": [
+			{
+				"question": "What is Live Score?",
+				"answer": "A Telegram football product: LiveScoreAppBot delivers match notifications, and a Mini App lets you browse matches and manage favourites."
+			},
+			{
+				"question": "Who is it for?",
+				"answer": "Personal DMs, Telegram groups, and Telegram channels. Each audience registers and receives alerts through the same bot."
+			},
+			{
+				"question": "Is personal use free?",
+				"answer": "Yes. Personal chats have no Stars plan and no chat Premium. You get configurable favourites alerts without an upgrade."
+			},
+			{
+				"question": "How do I connect a group?",
+				"answer": "Open a private chat with LiveScoreAppBot, send /group, then share a group where you and the bot have the required admin rights. Registration can still fail on type, rights, access, or conflicts."
+			},
+			{
+				"question": "How do I connect a channel?",
+				"answer": "Same flow with /channel from a private chat, sharing a channel with the required post rights. User-registered channels are distinct from official league channels."
+			},
+			{
+				"question": "What is Chat Premium?",
+				"answer": "An optional Stars subscription for registered groups and channels only: 49 Stars for 30 days with a 24-hour grace after lapse. Free chats keep one combined team or league favourite."
+			},
+			{
+				"question": "What can I configure in notifications?",
+				"answer": "Visible Mini App switches cover goal, goal scorer, final, kickoff, half-time, second half, pre-match 15, red card, plus a short delay option. Defaults favour goals, finals, and highlight (the highlight switch is not shown in Settings)."
+			},
+			{
+				"question": "What is the Mini App?",
+				"answer": "The Telegram WebApp opened from the bot: matches calendar, match detail, favourites, settings, start/team pick, and the official league channels list."
+			},
+			{
+				"question": "What are official league channels?",
+				"answer": "Public Telegram channels owned by the Live Score app owner and listed for discovery. They are not the same as notification profiles you register with /channel."
+			},
+			{
+				"question": "How do I stop personal alerts?",
+				"answer": "Send /stop in Telegram (or use the unsubscribe path). You can reactivate later with /start or from the Mini App."
+			}
+		]
+	},
+	"closingCta": {
+		"heading": "Start with LiveScoreAppBot",
+		"subheading": "Open the bot on Telegram for personal alerts, group and channel registration, and the Mini App."
+	}
+}
