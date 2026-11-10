@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import MarketingMarkdownPage from "@/components/MarketingMarkdownPage";
 import { MARKETING_PAGES } from "@/lib/content";
-import { marketingPageAlternates } from "@/lib/seo-metadata";
+import { marketingPageMetadata } from "@/lib/seo-metadata";
 import { isUrlLocale } from "@/lib/seo-sitemap";
 
 type Props = {
@@ -10,14 +10,12 @@ type Props = {
 };
 
 /** Home → MARKETING_SITEMAP urlPath `""`. */
-export function generateMetadata({ params }: Props): Metadata {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	if (!isUrlLocale(params.locale)) {
 		return {};
 	}
 
-	return {
-		alternates: marketingPageAlternates(params.locale, ""),
-	};
+	return marketingPageMetadata(params.locale, "", MARKETING_PAGES.home);
 }
 
 export default async function LocaleHomePage({ params }: Props) {
