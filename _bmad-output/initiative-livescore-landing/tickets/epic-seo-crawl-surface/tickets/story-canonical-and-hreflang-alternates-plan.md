@@ -3,7 +3,7 @@ title: 'Canonical and hreflang alternates'
 type: feature
 ticket: 2
 created: '2026-11-10'
-status: built
+status: done
 baseline_revision: 'ead69f1b5b19922b6e93f60a41aca51b603ec11c'
 route: full
 route_source: auto

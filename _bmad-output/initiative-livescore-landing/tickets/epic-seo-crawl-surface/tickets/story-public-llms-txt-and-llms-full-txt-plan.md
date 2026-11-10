@@ -3,7 +3,7 @@ title: 'Public llms.txt and llms-full.txt'
 type: feature
 ticket: 5
 created: '2026-11-10'
-status: built
+status: done
 baseline_revision: 'ead69f1b5b19922b6e93f60a41aca51b603ec11c'
 route: oneshot
 route_source: auto
