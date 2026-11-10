@@ -1,5 +1,4 @@
 diff --git a/apps/server/src/app.ts b/apps/server/src/app.ts
-index 7e57eeb..3db25e8 100644
 --- a/apps/server/src/app.ts
 +++ b/apps/server/src/app.ts
 @@ -757,6 +757,23 @@ export function createApp(options: CreateAppOptions) {

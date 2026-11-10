@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 import { getTranslations } from "next-intl/server";
 
 import { siteDetails } from "@/data/siteDetails";
@@ -21,6 +23,37 @@ const LINK_CLASSES =
 /** Visible focus ring for the error-state bot CTA. */
 const CTA_CLASSES =
 	"text-black bg-primary hover:bg-primary-accent inline-block rounded-full px-6 py-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary";
+
+/** Shared surface and body type for the two degraded states (error / empty). */
+const PANEL_CLASSES = "rounded-2xl bg-hero-background p-6";
+const PANEL_BODY_CLASSES = "text-base text-foreground-accent";
+
+type StatePanelProps = {
+	title: string;
+	body: string;
+	/** Optional action rendered under the body (the error-state bot CTA). */
+	children?: ReactNode;
+};
+
+/**
+ * Degraded list state as a polite live region — the same frame for the error and
+ * the empty state, so both modes stay visually and semantically identical.
+ */
+function ChannelStatePanel({ title, body, children }: StatePanelProps) {
+	return (
+		<div role="status" aria-live="polite" className={PANEL_CLASSES}>
+			<h3 className="mb-2 text-xl font-semibold">{title}</h3>
+			<p
+				className={
+					children ? `${PANEL_BODY_CLASSES} mb-4` : PANEL_BODY_CLASSES
+				}
+			>
+				{body}
+			</p>
+			{children}
+		</div>
+	);
+}
 
 /**
  * Live official channels list — server component (no client fetch, no
@@ -56,15 +89,7 @@ export default async function OfficialChannelsList({ locale }: Props) {
 			</h2>
 
 			{mode === "error" ? (
-				<div
-					role="status"
-					aria-live="polite"
-					className="rounded-2xl bg-hero-background p-6"
-				>
-					<h3 className="mb-2 text-xl font-semibold">{t("errorTitle")}</h3>
-					<p className="mb-4 text-base text-foreground-accent">
-						{t("errorBody")}
-					</p>
+				<ChannelStatePanel title={t("errorTitle")} body={t("errorBody")}>
 					<a
 						href={siteDetails.botUrl}
 						target="_blank"
@@ -73,16 +98,9 @@ export default async function OfficialChannelsList({ locale }: Props) {
 					>
 						{tShell("cta")}
 					</a>
-				</div>
+				</ChannelStatePanel>
 			) : items.length === 0 ? (
-				<div
-					role="status"
-					aria-live="polite"
-					className="rounded-2xl bg-hero-background p-6"
-				>
-					<h3 className="mb-2 text-xl font-semibold">{t("emptyTitle")}</h3>
-					<p className="text-base text-foreground-accent">{t("emptyBody")}</p>
-				</div>
+				<ChannelStatePanel title={t("emptyTitle")} body={t("emptyBody")} />
 			) : (
 				<>
 					<p className="mb-3 text-sm text-foreground-accent">

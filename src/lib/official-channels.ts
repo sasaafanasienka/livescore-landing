@@ -32,7 +32,7 @@ export type OfficialChannelsResult = {
 };
 
 /** Next data-cache tag for on-demand revalidation of the upstream fetch. */
-export const OFFICIAL_CHANNELS_TAG = "official-channels";
+const OFFICIAL_CHANNELS_TAG = "official-channels";
 
 const DEFAULT_REVALIDATE_SECONDS = 300;
 const MAX_REVALIDATE_SECONDS = 86_400;
@@ -64,7 +64,7 @@ const FIXTURE_ITEMS: readonly OfficialChannel[] = [
 ];
 
 /** `OFFICIAL_CHANNELS_REVALIDATE` in seconds; safe parse, default 300. */
-export function officialChannelsRevalidateSeconds(): number {
+function officialChannelsRevalidateSeconds(): number {
 	const raw = process.env.OFFICIAL_CHANNELS_REVALIDATE?.trim();
 	if (!raw) {
 		return DEFAULT_REVALIDATE_SECONDS;
@@ -83,7 +83,7 @@ export function officialChannelsRevalidateSeconds(): number {
  * upstream: with `OFFICIAL_CHANNELS_API_URL` set the live path always runs, so
  * fixture data cannot shadow real channel data in a production deploy.
  */
-export function officialChannelsFixtureEnabled(): boolean {
+function officialChannelsFixtureEnabled(): boolean {
 	if (process.env.OFFICIAL_CHANNELS_FIXTURE?.trim() !== "1") {
 		return false;
 	}
@@ -170,6 +170,17 @@ export function normalizeOfficialChannels(payload: unknown): OfficialChannel[] |
 }
 
 /**
+ * Degraded result: empty list with the reason in `mode`. Degradation is a
+ * payload state, never a throw and never a non-200 — both callers (the BFF and
+ * the page) render it, so it is built in one place.
+ */
+function emptyResult(
+	mode: Extract<OfficialChannelsMode, "unconfigured" | "error">,
+): OfficialChannelsResult {
+	return { items: [], mode };
+}
+
+/**
  * Reads the official channels list for the public marketing site.
  * Never throws: every upstream failure degrades to `mode: "error"` with an
  * empty list, and nothing about the failure (URL, stack) leaves this module.
@@ -181,7 +192,7 @@ export async function getOfficialChannels(): Promise<OfficialChannelsResult> {
 
 	const url = process.env.OFFICIAL_CHANNELS_API_URL?.trim();
 	if (!url) {
-		return { items: [], mode: "unconfigured" };
+		return emptyResult("unconfigured");
 	}
 
 	try {
@@ -197,16 +208,16 @@ export async function getOfficialChannels(): Promise<OfficialChannelsResult> {
 		});
 
 		if (!response.ok) {
-			return { items: [], mode: "error" };
+			return emptyResult("error");
 		}
 
 		const items = normalizeOfficialChannels(await response.json());
 		if (!items) {
-			return { items: [], mode: "error" };
+			return emptyResult("error");
 		}
 
 		return { items, mode: "live" };
 	} catch {
-		return { items: [], mode: "error" };
+		return emptyResult("error");
 	}
 }
