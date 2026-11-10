@@ -1,0 +1,28 @@
+diff --git a/apps/server/src/app.ts b/apps/server/src/app.ts
+index 7e57eeb..3db25e8 100644
+--- a/apps/server/src/app.ts
++++ b/apps/server/src/app.ts
+@@ -757,6 +757,23 @@ export function createApp(options: CreateAppOptions) {
+     }),
+   );
+ 
++  // Public owner channels for the marketing site: no Telegram auth, no user
++  // context, same payload shape as the Mini App list above.
++  app.get("/api/public/channels", async (c) => {
++    try {
++      const items = await listOwnerChannels(options.db, options.appOwnerUserId ?? null);
++      return c.json({ data: { items } });
++    } catch (error) {
++      console.error(
++        JSON.stringify({
++          msg: "failed to list public owner channels",
++          error: error instanceof Error ? error.message : String(error),
++        }),
++      );
++      return c.json({ error: { message: "Failed to load channels" } }, 500);
++    }
++  });
++
+   // Discoverable owner channels (exact path, Telegram-authenticated).
+   app.get("/api/channels", auth, async (c) => {
+     try {

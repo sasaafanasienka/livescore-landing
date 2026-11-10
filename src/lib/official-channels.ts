@@ -100,11 +100,30 @@ function readText(value: unknown): string {
 }
 
 /**
+ * Upstream `id` is the product's DB id (`channels.id`), so it arrives as a
+ * number: `OwnerChannelItem.id: number` in `packages/core`. The landing only
+ * needs a stable string key, so both forms are accepted and coerced here —
+ * a numeric-only contract would otherwise drop every real row.
+ */
+function readId(value: unknown): string {
+	if (typeof value === "string") {
+		return value.trim();
+	}
+
+	if (typeof value === "number" && Number.isFinite(value)) {
+		return String(value);
+	}
+
+	return "";
+}
+
+/**
  * Normalizes the upstream payload to `OfficialChannel[]`.
- * Drops rows without non-empty string `id`/`title`/`link` (and non-http(s)
- * links), keeps upstream order (no local sorting), `logo` → `null` when absent
- * or not an http(s) URL. Returns `null` when the payload shape is not the
- * contract's `{ data: { items: [...] } }`.
+ * Drops rows without a usable `id` (non-empty string or finite number, coerced
+ * to string) and non-empty string `title`/`link` (and non-http(s) links), keeps
+ * upstream order (no local sorting), `logo` → `null` when absent or not an
+ * http(s) URL. Returns `null` when the payload shape is not the contract's
+ * `{ data: { items: [...] } }`.
  */
 export function normalizeOfficialChannels(payload: unknown): OfficialChannel[] | null {
 	if (typeof payload !== "object" || payload === null) {
@@ -129,7 +148,7 @@ export function normalizeOfficialChannels(payload: unknown): OfficialChannel[] |
 		}
 
 		const record = item as Record<string, unknown>;
-		const id = readText(record.id);
+		const id = readId(record.id);
 		const title = readText(record.title);
 		const link = readText(record.link);
 
