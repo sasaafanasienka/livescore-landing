@@ -3,7 +3,7 @@ title: 'Six-locale list copy and full states'
 type: feature
 ticket: '3'
 created: '2026-11-10'
-status: built
+status: done
 baseline_revision: '9f1596027691ef3e41e630386b9e4002fb6611e1'
 route: full
 route_source: auto
