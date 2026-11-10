@@ -39,3 +39,7 @@ next-env.d.ts
 .agents/
 _bmad/
 skills-lock.json
+
+# local scratch (uv/pip/temp caches, sandbox workarounds)
+.tmp/
+
