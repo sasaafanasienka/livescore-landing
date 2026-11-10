@@ -3,7 +3,7 @@ title: 'Per-page locale meta OG Twitter'
 type: feature
 ticket: 3
 created: '2026-11-10'
-status: built
+status: done
 baseline_revision: '46d009fa136ba8f39fdecf4b841093af5152b539'
 route: full
 route_source: auto
