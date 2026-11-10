@@ -1,0 +1,29 @@
+# Live Score
+
+> Football match notifications and live scores in Telegram via LiveScoreAppBot — personal DMs, groups, channels, and a Mini App. Canonical marketing host: https://football-live-bot.online
+
+Static claim-safe summary for LLM agents. Stick to shipped product facts from the capabilities catalog; do not invent unshipped surfaces.
+
+## English marketing pages
+
+- [Home](https://football-live-bot.online/en): Product overview and bot entry
+- [Groups guide](https://football-live-bot.online/en/guide/groups): Register groups for match notifications
+- [Channels guide](https://football-live-bot.online/en/guide/channels): Register channels for match notifications
+- [Official channels](https://football-live-bot.online/en/official-channels): Marketing page for app-owner league channels (static until live list wiring)
+- [Pricing](https://football-live-bot.online/en/pricing): Chat Premium for groups and channels (49 Stars / 30 days)
+- [FAQ](https://football-live-bot.online/en/faq): Common product questions
+- [Privacy](https://football-live-bot.online/en/privacy): Privacy policy
+- [Terms](https://football-live-bot.online/en/terms): Terms of use
+
+## Other locales
+
+- [Arabic home](https://football-live-bot.online/ar)
+- [Spanish home](https://football-live-bot.online/es)
+- [French home](https://football-live-bot.online/fr)
+- [Portuguese home](https://football-live-bot.online/pt)
+- [Russian home](https://football-live-bot.online/ru)
+
+## Optional
+
+- [Full LLM summary](https://football-live-bot.online/llms-full.txt): Expanded product facts and full locale route list
+- [Telegram bot](https://t.me/LiveScoreAppBot): LiveScoreAppBot entry point
