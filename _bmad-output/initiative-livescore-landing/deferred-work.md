@@ -65,3 +65,13 @@ condition that makes it worth doing.
 - source_plan: `_bmad-output/initiative-livescore-landing/plan-seo-single-page-surface.md`
   summary: Organization JSON-LD sameAs still points at Mini App deep link via siteDetails.botUrl
   evidence: Quick review; fix belongs with deferred JSON-LD enrichment (prefer botChatUrl)
+
+## Split from seo-audit round 3 intent (2026-11-11)
+
+- source_plan: none
+  summary: Restore How it works into SSR HTML by rendering all three tab panels in the DOM and hiding inactive ones with aria-hidden + display:none (keep query-param deep-link)
+  evidence: Split from seo-audit r3 multi-goal; human specified keep params, hide via attributes not Suspense/null fallback; deferred after OG/favicon/copy
+
+- source_plan: none
+  summary: Ship root not-found page with Header/Footer + hero-like 404 copy and home CTA
+  evidence: Split from seo-audit r3 multi-goal; human wants hero-styled 404 with nav shell; deferred after OG/favicon/copy

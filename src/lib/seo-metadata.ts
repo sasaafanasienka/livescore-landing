@@ -69,8 +69,8 @@ export async function marketingPageMetadata(
 			images: [
 				{
 					url: ogImage,
-					width: 1200,
-					height: 630,
+					width: 1714,
+					height: 900,
 					alt: siteDetails.siteName,
 				},
 			],

@@ -25,7 +25,7 @@
 	},
 	"howItWorks": {
 		"title": "Cómo funciona",
-		"description": "Tres audiencias, un bot. Elige tu ruta — los pasos coinciden con lo que LiveScoreAppBot ofrece hoy.",
+		"description": "Las notificaciones se pueden configurar no solo para ti, sino también para un grupo de amigos o tu propio canal de Telegram. Lee las instrucciones:",
 		"tabs": [
 			{
 				"id": "personal",

@@ -25,7 +25,7 @@
 	},
 	"howItWorks": {
 		"title": "How it works",
-		"description": "Three audiences, one bot. Pick your path — steps match what LiveScoreAppBot ships today.",
+		"description": "Notifications can be set up not only for yourself but also for a group of friends or your own Telegram channel. Read the instructions:",
 		"tabs": [
 			{
 				"id": "personal",
