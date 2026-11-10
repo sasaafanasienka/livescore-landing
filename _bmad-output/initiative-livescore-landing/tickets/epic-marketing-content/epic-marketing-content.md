@@ -13,6 +13,7 @@ companions:
 after: ["epic-i18n-foundation"]
 risk: high
 refined: true
+status: done
 ---
 
 # Claim-safe marketing pages in git
@@ -83,3 +84,4 @@ A prospect in any supported language can learn what Live Score actually ships, f
 - Decision: 2026-11-09 — Nav labels (EN canonical keys; localize via messages/content, same targets): primary **Groups** → `/guide/groups`, **Channels** → `/guide/channels`, **Official channels** → `/official-channels`, **Pricing** → `/pricing`, **FAQ** → `/faq`; footer **Privacy** → `/privacy`, **Terms** → `/terms`. Brand mark remains **Live Score** (home). Drop Finwise `#features` / `#testimonials` / `#pricing` hash nav.
 - Decision: 2026-11-09 — tracer bullet = story 1 `Claim-safe home via content routes` (hitl). Least-certain next = story 2 dedicated pricing + chat Premium facts. Parallel after 1: guides, official-channels slot, FAQ, legal. Nav after all page routes. Closing refactor sweep; declined separate e2e suite — entry `verify` lines are the checks.
 - Waits on epic-i18n-foundation because: locale routing, RTL, siteUrl, brand shell, content-file layout.
+- Decision: 2026-11-10 — epic closed `done`: all eight stories done; locked sitemap + claim-safe pages handed to epic-seo-crawl-surface / epic-official-channels.

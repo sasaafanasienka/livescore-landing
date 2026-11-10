@@ -85,3 +85,4 @@ Search engines and LLM crawlers can discover, alternate-link, and summarize the 
   - `/{locale}/faq` → `faq.md`
   - `/{locale}/privacy` → `privacy.md`
   - `/{locale}/terms` → `terms.md`
+- Decision: 2026-11-10 — tracer bullet = story 1 `Robots and absolute sitemap index` (hitl). Least-certain next = story 2 canonical + hreflang + x-default. Parallel after 2: meta/OG/Twitter (ordered after 2 — same metadata lane) and JSON-LD; llms* after 1. Closing refactor sweep; declined separate e2e suite — entry `verify` lines are the checks. Tooling `.agents/` / `_bmad/` / `skills-lock.json` stays gitignored (same as epic 2).

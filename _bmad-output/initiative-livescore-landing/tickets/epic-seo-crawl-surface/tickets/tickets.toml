@@ -1,0 +1,67 @@
+# epic-seo-crawl-surface stories — build order. Approved path 2026-11-10 (autopilot).
+
+[[entry]]
+id = 1
+type = "story"
+title = "Robots and absolute sitemap index"
+description = "Tracer: ships robots.txt that allows indexable locale marketing pages and points at a sitemap index; sitemap index + per-locale sitemaps emit absolute https://football-live-bot.online URLs for all 8 locked routes × 6 locales (including official-channels)."
+verify = "GET /robots.txt allows locale pages and references the sitemap index; sitemap index lists per-locale sitemaps; each locale sitemap lists absolute football-live-bot.online URLs for home, guide/groups, guide/channels, official-channels, pricing, faq, privacy, terms (8×6)."
+covers = ["R1", "R2", "R3", "R6", "R8"]
+after = []
+hitl = true
+risk = "medium"
+
+[[entry]]
+id = 2
+type = "story"
+title = "Canonical and hreflang alternates"
+description = "Least-certain: every indexable marketing page emits a self-canonical absolute URL plus hreflang alternates for ar/en/es/fr/pt/ru with x-default=en (URL slug pt for pt-BR content)."
+verify = "On /en and /en/guide/groups (spot-check), HTML head has self-canonical under https://football-live-bot.online and hreflang links for all six locales plus x-default pointing at the en URL of the same page."
+covers = ["R2", "R4"]
+after = [1]
+hitl = false
+risk = "high"
+
+[[entry]]
+id = 3
+type = "story"
+title = "Per-page locale meta OG Twitter"
+description = "Replaces site-wide-only layout defaults with per-page, per-locale title/description plus Open Graph and Twitter card metadata for every indexable marketing route."
+verify = "Spot-check home, pricing, and faq in en and ar: each page has distinct locale-appropriate title/description and OG/Twitter tags (not only the shared layout defaults)."
+covers = ["R2", "R5"]
+after = [2]
+hitl = false
+risk = "medium"
+
+[[entry]]
+id = 4
+type = "story"
+title = "JSON-LD Organization SoftwareApplication FAQPage"
+description = "Adds claim-safe JSON-LD: Organization and/or SoftwareApplication on core marketing surfaces and FAQPage on the FAQ route; structured claims stay within SERVICE-CAPABILITIES."
+verify = "Home (or shell) exposes Organization and/or SoftwareApplication JSON-LD; /en/faq exposes FAQPage JSON-LD; payloads omit predictions/Discord/player-follow/live highlights-cron/personal Premium."
+covers = ["R2", "R7"]
+after = [2]
+hitl = false
+risk = "medium"
+
+[[entry]]
+id = 5
+type = "story"
+title = "Public llms.txt and llms-full.txt"
+description = "Adds claim-safe llms.txt and llms-full.txt under public/ summarizing the site and key absolute marketing links for LLM agents."
+verify = "GET /llms.txt and /llms-full.txt return 200 from public/; bodies include absolute football-live-bot.online links to key locale routes and omit forbidden non-goal claims."
+covers = ["R2", "R9"]
+after = [1]
+hitl = false
+risk = "low"
+
+[[entry]]
+id = 6
+type = "story"
+title = "Refactor sweep"
+description = "Cleanup-only pass over deferred nits from plans/review in this epic; no new scope."
+verify = "Lint/build still pass; no new features beyond cleanup called out in the story plan at start."
+covers = []
+after = [2, 3, 4, 5]
+hitl = false
+risk = "low"
