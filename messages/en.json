@@ -17,5 +17,16 @@
 			"privacy": "Privacy",
 			"terms": "Terms"
 		}
+	},
+	"OfficialChannels": {
+		"listHeading": "Official league channels",
+		"count": "{count, plural, one {# official channel} other {# official channels}}",
+		"emptyTitle": "No channels to show yet",
+		"emptyBody": "The official channel list is not published on the site yet. Open LiveScoreAppBot on Telegram to see the leagues and channels inside the app.",
+		"errorTitle": "The channel list is temporarily unavailable",
+		"errorBody": "We could not load the official channels just now. The list refreshes automatically, so try again in a few minutes.",
+		"logoAlt": "{title} logo",
+		"openChannel": "Open channel",
+		"loading": "Loading official channels…"
 	}
 }

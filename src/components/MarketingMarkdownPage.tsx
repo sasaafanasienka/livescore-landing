@@ -2,6 +2,8 @@ import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
+import type { ReactNode } from "react";
+
 import { siteDetails } from "@/data/siteDetails";
 import { routing, type UrlLocale } from "@/i18n/routing";
 import {
@@ -13,9 +15,15 @@ import {
 type Props = {
 	locale: string;
 	page: MarketingPage;
+	/** Optional slot rendered between the md shell copy and the CTA. */
+	children?: ReactNode;
 };
 
-export default async function MarketingMarkdownPage({ locale, page }: Props) {
+export default async function MarketingMarkdownPage({
+	locale,
+	page,
+	children,
+}: Props) {
 	if (!hasLocale(routing.locales, locale)) {
 		notFound();
 	}
@@ -30,6 +38,7 @@ export default async function MarketingMarkdownPage({ locale, page }: Props) {
 			<p className="max-w-xl text-lg text-foreground-accent whitespace-pre-wrap">
 				{body}
 			</p>
+			{children}
 			<a
 				href={siteDetails.botUrl}
 				target="_blank"

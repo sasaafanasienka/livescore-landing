@@ -1,8 +1,13 @@
+---
+title: Live Score — official league channels
+description: The official Telegram league channels run by the Live Score app owner. The list loads live from the product and is distinct from user notification channels via /channel.
+---
+
 Live Score
 
-Official league channels — placeholder slot
+Official league channels
 
-This marketing page is a static placeholder for Live Score’s official app-owner league channels list. The live directory is available in the Telegram Mini App; this route holds a stable slot until that list is wired here. No channel directory is listed on this page.
+These are the official Telegram channels run by the Live Score app owner. The list on this page is loaded from the product, so it stays current on its own — no page copy changes and no app login are needed to read it.
 
 Official league channels are distinct from user-registered notification channels via /channel.
 
