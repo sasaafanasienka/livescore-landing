@@ -3,7 +3,7 @@ title: 'JSON-LD Organization SoftwareApplication FAQPage'
 type: feature
 ticket: 4
 created: '2026-11-10'
-status: built
+status: done
 baseline_revision: '90ba213dcddced919751cbd4c4a790b6ef7c5fc5'
 route: full
 route_source: auto
