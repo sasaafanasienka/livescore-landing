@@ -19,7 +19,7 @@ export function absoluteMarketingPageUrl(
 	return `${SITE_ORIGIN}/${locale}/${urlPath}`;
 }
 
-/** All eight locked absolute page URLs for one URL locale. */
+/** Home absolute URL for one URL locale (sitemap surface is home-only). */
 export function localeMarketingPageUrls(locale: UrlLocale): string[] {
 	return MARKETING_SITEMAP.map(({ urlPath }) =>
 		absoluteMarketingPageUrl(locale, urlPath),
@@ -52,14 +52,31 @@ ${body}
 `;
 }
 
-export function buildUrlsetXml(pageUrls: string[]): string {
-	const body = pageUrls
-		.map((url) => `  <url>\n    <loc>${escapeXml(url)}</loc>\n  </url>`)
-		.join("\n");
+/**
+ * Home-only urlset for one locale: single `<url>` with `lastmod` and xhtml
+ * hreflang alternates for all six URL locales + `x-default` → en.
+ * `lastmod` defaults to build-time ISO date (YYYY-MM-DD).
+ */
+export function buildUrlsetXml(
+	locale: UrlLocale,
+	lastmod: string = new Date().toISOString().slice(0, 10),
+): string {
+	const loc = absoluteMarketingPageUrl(locale, "");
+	const alternates = [
+		...locales.map(
+			(alt) =>
+				`    <xhtml:link rel="alternate" hreflang="${alt}" href="${escapeXml(absoluteMarketingPageUrl(alt, ""))}"/>`,
+		),
+		`    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(absoluteMarketingPageUrl("en", ""))}"/>`,
+	].join("\n");
 
 	return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${body}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>${escapeXml(loc)}</loc>
+    <lastmod>${escapeXml(lastmod)}</lastmod>
+${alternates}
+  </url>
 </urlset>
 `;
 }

@@ -3,7 +3,7 @@
  *
  * Covers frozen I/O matrix rows without a browser: copy shape for all six
  * locales, section composition + bot CTA, channels ok/degraded markup paths,
- * claim scan, and Headless UI tab wiring for How-it-works + Pricing.
+ * claim scan, Headless UI tabs for How-it-works, and pricing comparison table.
  *
  * Run: `pnpm check:home-landing` (or `pnpm dlx tsx scripts/contracts/home-landing.contract.ts`)
  */
@@ -19,6 +19,13 @@ import {
 	homeCopyProductLocales,
 	type HomeCopy,
 } from "../../src/lib/home-copy";
+import { MARKETING_SITEMAP } from "../../src/lib/content";
+import {
+	absoluteLocaleSitemapUrls,
+	buildSitemapIndexXml,
+	buildUrlsetXml,
+	localeMarketingPageUrls,
+} from "../../src/lib/seo-sitemap";
 import { siteDetails } from "../../src/data/siteDetails";
 import type { UrlLocale } from "../../src/i18n/routing";
 
@@ -53,33 +60,25 @@ async function check(name: string, run: () => Promise<void>): Promise<void> {
 }
 
 function assertPricingFacts(copy: HomeCopy, locale: string): void {
-	const personalBlob = [
-		copy.pricing.personal.title,
-		copy.pricing.personal.body,
-		...copy.pricing.personal.points,
+	assert.ok(copy.pricing.rows.length >= 3, `${locale}: pricing rows`);
+	const blob = [
+		copy.pricing.title,
+		copy.pricing.description,
+		copy.pricing.freeColumn,
+		copy.pricing.premiumColumn,
+		...copy.pricing.rows.flatMap((row) => [row.label, row.free, row.premium]),
 	].join(" ");
+	assert.match(blob, /\b49\b/, `${locale}: pricing must cite 49 Stars`);
+	assert.match(blob, /\b30\b/, `${locale}: pricing must cite 30 days`);
 	assert.match(
-		personalBlob,
-		/free|gratis|gratuit|бесплат|مجاني|ilimitad|unlimited|без лимит|بدون حدود/i,
-		`${locale}: personal panel must state free/unlimited`,
+		blob,
+		/real[\s-]?time|tiempo\s+real|temps\s+réel|tempo\s+real|реального\s+времени|الوقت\s+الفعلي/i,
+		`${locale}: pricing must cite real-time alerts`,
 	);
 	assert.doesNotMatch(
-		personalBlob,
-		/\b49\b/,
-		`${locale}: personal panel must not quote Chat Premium Stars price`,
-	);
-
-	const chatsBlob = [
-		copy.pricing.chats.title,
-		copy.pricing.chats.body,
-		...copy.pricing.chats.points,
-	].join(" ");
-	assert.match(chatsBlob, /\b49\b/, `${locale}: chats panel must cite 49 Stars`);
-	assert.match(chatsBlob, /\b30\b/, `${locale}: chats panel must cite 30 days`);
-	assert.match(
-		chatsBlob,
-		/\b24\b/,
-		`${locale}: chats panel must cite 24h grace`,
+		blob,
+		/personal Premium|\bgrace\b/i,
+		`${locale}: pricing must not claim personal Premium or grace jargon`,
 	);
 }
 
@@ -135,16 +134,17 @@ async function main(): Promise<void> {
 			"utf8",
 		);
 		assert.match(cta, /siteDetails\.botUrl/);
-		assert.equal(siteDetails.botUrl, "https://t.me/LiveScoreAppBot");
+		assert.equal(siteDetails.botUrl, "https://t.me/LiveScoreAppBot/app");
 	});
 
-	await check("channels OK path: carousel markup when items resolve", async () => {
+	await check("channels OK path: grid markup when items resolve", async () => {
 		const source = await readFile(
 			path.join(root, "src/components/home/OfficialChannelsHome.tsx"),
 			"utf8",
 		);
 		assert.match(source, /getOfficialChannels/);
-		assert.match(source, /overflow-x-auto/);
+		assert.match(source, /grid-cols-1/);
+		assert.match(source, /xl:grid-cols-4/);
 		assert.match(source, /item\.link/);
 		assert.match(source, /data-mode=\{mode\}/);
 	});
@@ -158,7 +158,11 @@ async function main(): Promise<void> {
 			);
 			assert.match(landing, /home-official-channels-heading/);
 			assert.match(landing, /copy\.channels\.description/);
-			assert.match(landing, /copy\.channels\.seeAll/);
+			assert.doesNotMatch(
+				landing,
+				/href=["']\/official-channels["']/,
+				"home must not link to the standalone official-channels page",
+			);
 			assert.match(
 				landing,
 				/Suspense[\s\S]*OfficialChannelsHome/,
@@ -194,7 +198,7 @@ async function main(): Promise<void> {
 		);
 	});
 
-	await check("tab UI: How-it-works + Pricing use Headless UI tabs", async () => {
+	await check("tab UI: How-it-works uses Headless UI; Pricing is a table", async () => {
 		const how = await readFile(
 			path.join(root, "src/components/home/HowItWorksTabs.tsx"),
 			"utf8",
@@ -203,24 +207,85 @@ async function main(): Promise<void> {
 			path.join(root, "src/components/home/PricingTabs.tsx"),
 			"utf8",
 		);
-		for (const [label, source] of [
-			["how", how],
-			["pricing", pricing],
-		] as const) {
-			assert.match(source, /TabGroup/, `${label} TabGroup`);
-			assert.match(source, /TabList/, `${label} TabList`);
-			assert.match(source, /TabPanel/, `${label} TabPanel`);
-			assert.match(source, /@headlessui\/react/, `${label} headlessui`);
-		}
+		assert.match(how, /TabGroup/, "how TabGroup");
+		assert.match(how, /TabList/, "how TabList");
+		assert.match(how, /TabPanel/, "how TabPanel");
+		assert.match(how, /@headlessui\/react/, "how headlessui");
+		assert.match(pricing, /<table/, "pricing table");
+		assert.doesNotMatch(pricing, /TabGroup/, "pricing has no tabs");
 	});
 
-	await check("dedicated pricing + faq routes still present", async () => {
+	await check("deleted marketing sub-routes are absent", async () => {
+		const { access } = await import("node:fs/promises");
 		for (const rel of [
 			"src/app/[locale]/pricing/page.tsx",
 			"src/app/[locale]/faq/page.tsx",
+			"src/app/[locale]/guide/groups/page.tsx",
+			"src/app/[locale]/guide/channels/page.tsx",
+			"src/app/[locale]/official-channels/page.tsx",
+			"src/app/[locale]/privacy/page.tsx",
+			"src/app/[locale]/terms/page.tsx",
 		]) {
-			const text = await readFile(path.join(root, rel), "utf8");
-			assert.match(text, /MarketingMarkdownPage/);
+			await assert.rejects(
+				() => access(path.join(root, rel)),
+				(err: NodeJS.ErrnoException) => err?.code === "ENOENT",
+				`${rel} must be absent (single-page crawl surface)`,
+			);
+		}
+	});
+
+	await check("locale not-found + home page exist", async () => {
+		const { access } = await import("node:fs/promises");
+		await access(path.join(root, "src/app/[locale]/not-found.tsx"));
+		await access(path.join(root, "src/app/[locale]/page.tsx"));
+	});
+
+	await check("home-only sitemap helpers emit lastmod + hreflang", async () => {
+		assert.equal(MARKETING_SITEMAP.length, 1, "MARKETING_SITEMAP is home-only");
+		assert.equal(MARKETING_SITEMAP[0]?.urlPath, "", "only home urlPath");
+
+		assert.deepEqual(
+			localeMarketingPageUrls("en"),
+			["https://football-live-bot.online/en"],
+			"one home loc per locale",
+		);
+
+		const xml = buildUrlsetXml("en", "2026-11-10");
+		assert.match(xml, /<loc>https:\/\/football-live-bot\.online\/en<\/loc>/);
+		assert.match(xml, /<lastmod>2026-11-10<\/lastmod>/);
+		assert.match(xml, /xmlns:xhtml=/);
+		for (const loc of ["ar", "en", "es", "fr", "pt", "ru"]) {
+			assert.match(
+				xml,
+				new RegExp(
+					`hreflang="${loc}" href="https://football-live-bot\\.online/${loc}"`,
+				),
+				`hreflang ${loc}`,
+			);
+		}
+		assert.match(
+			xml,
+			/hreflang="x-default" href="https:\/\/football-live-bot\.online\/en"/,
+		);
+		assert.equal(
+			(xml.match(/<url>/g) ?? []).length,
+			1,
+			"exactly one <url> in locale sitemap",
+		);
+
+		const indexXml = buildSitemapIndexXml(absoluteLocaleSitemapUrls());
+		assert.equal(
+			(indexXml.match(/<sitemap>/g) ?? []).length,
+			6,
+			"sitemap index lists six locale sitemaps",
+		);
+		for (const loc of ["ar", "en", "es", "fr", "pt", "ru"]) {
+			assert.match(
+				indexXml,
+				new RegExp(
+					`<loc>https://football-live-bot\\.online/sitemaps/${loc}\\.xml</loc>`,
+				),
+			);
 		}
 	});
 

@@ -1,10 +1,12 @@
 # Content layout contract
 
-Marketing pages live at:
+Marketing home copy lives at:
 
 ```text
-content/{locale}/{page}.md
+content/{locale}/home.md
 ```
+
+Longform landing section copy (JSON) lives under `content/home/{locale}.json` and is loaded by `src/lib/home-copy.ts`.
 
 `{locale}` is the **product / content locale id**, not always the URL slug.
 
@@ -22,21 +24,16 @@ content/{locale}/{page}.md
 Helpers: `productLocales` / `toProductLocale` in `src/i18n/routing.ts`.
 Page slug constants: `MARKETING_PAGES` / `MARKETING_SITEMAP` in `src/lib/content.ts`.
 
-## Locked sitemap (URL ↔ content file)
+## Indexable crawl surface (6 homes only)
 
 URL prefixes: `ar` | `en` | `es` | `fr` | `pt` | `ru`. Content folders: `ar` | `en` | `es` | `fr` | `pt-BR` | `ru`.
 
 | URL path | Content file |
 |----------|--------------|
 | `/{locale}` | `home.md` |
-| `/{locale}/guide/groups` | `guide-groups.md` |
-| `/{locale}/guide/channels` | `guide-channels.md` |
-| `/{locale}/official-channels` | `official-channels.md` |
-| `/{locale}/pricing` | `pricing.md` |
-| `/{locale}/faq` | `faq.md` |
-| `/{locale}/privacy` | `privacy.md` |
-| `/{locale}/terms` | `terms.md` |
 
-Example: `/en` → `content/en/home.md`; `/pt/pricing` → `content/pt-BR/pricing.md`.
+Example: `/en` → `content/en/home.md`; `/pt` → `content/pt-BR/home.md`.
 
-Downstream epics must keep this map — especially **URL `pt` → content `pt-BR`**. Sibling marketing stories own non-home page bodies and routes; this tracer locks the contract and ships claim-safe `home.md` for all six locales.
+Former marketing sub-routes (`guide/*`, `official-channels`, `pricing`, `faq`, `privacy`, `terms`) are removed from the crawl surface and must 404. Keep `GET /api/official-channels` and the home `OfficialChannelsHome` section.
+
+Downstream epics must keep this map — especially **URL `pt` → content `pt-BR`**.

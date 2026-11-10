@@ -47,3 +47,21 @@ condition that makes it worth doing.
   the entry is replaced. This is Next's documented data-cache behavior and the
   price of R5 freshness; `mode: "error"` is observable on a cold or evicted
   cache, which is the verified path. Do not "fix" it with `cache: "no-store"`.
+
+## Split from plan-seo-single-page-surface (2026-11-10)
+
+- source_plan: `_bmad-output/initiative-livescore-landing/plan-seo-single-page-surface.md`
+  summary: Brand Football. LIVE + home meta rewrite + JSON-LD enrichment + llms rewrite + footer Telegram Privacy/Terms + GA G-HWTR9NPBNX + GSC verification meta
+  evidence: Split from SEO single-page plan to keep implementer scope under token budget; depends on home-only crawl surface landing first
+
+- source_plan: `_bmad-output/initiative-livescore-landing/plan-seo-single-page-surface.md`
+  summary: Crawl-visible FAQ/How-it-works panels + home ISR revalidate 300 + per-locale OG/Twitter image wiring
+  evidence: Split from SEO single-page plan; OG assets delivered for en/es/fr/pt/ru (Cursor assets Frame_22/84/85/86/87), Arabic OG still missing
+
+- source_plan: `_bmad-output/initiative-livescore-landing/plan-seo-single-page-surface.md`
+  summary: Stale llms.txt / llms-full.txt still advertise deleted 8×6 marketing routes after crawl-surface collapse
+  evidence: Quick review; files on disk list /guide /pricing /faq etc while MARKETING_SITEMAP is home-only; llms rewrite deferred by frozen Never
+
+- source_plan: `_bmad-output/initiative-livescore-landing/plan-seo-single-page-surface.md`
+  summary: Organization JSON-LD sameAs still points at Mini App deep link via siteDetails.botUrl
+  evidence: Quick review; fix belongs with deferred JSON-LD enrichment (prefer botChatUrl)

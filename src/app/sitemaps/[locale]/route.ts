@@ -1,9 +1,5 @@
 import { locales } from "@/i18n/routing";
-import {
-	buildUrlsetXml,
-	isUrlLocale,
-	localeMarketingPageUrls,
-} from "@/lib/seo-sitemap";
+import { buildUrlsetXml, isUrlLocale } from "@/lib/seo-sitemap";
 
 type RouteParams = {
 	params: { locale: string };
@@ -20,7 +16,7 @@ export function GET(_request: Request, { params }: RouteParams): Response {
 		return new Response(null, { status: 404 });
 	}
 
-	const xml = buildUrlsetXml(localeMarketingPageUrls(locale));
+	const xml = buildUrlsetXml(locale);
 
 	return new Response(xml, {
 		status: 200,
