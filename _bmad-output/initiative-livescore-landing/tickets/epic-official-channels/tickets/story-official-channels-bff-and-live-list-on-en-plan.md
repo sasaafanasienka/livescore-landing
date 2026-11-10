@@ -3,7 +3,7 @@ title: 'Official channels BFF and live list on en'
 type: feature
 ticket: 1
 created: '2026-11-10'
-status: built
+status: done
 baseline_revision: '50fe3e18c80c759d1602c06016088e85c030b352'
 route: full
 route_source: auto
