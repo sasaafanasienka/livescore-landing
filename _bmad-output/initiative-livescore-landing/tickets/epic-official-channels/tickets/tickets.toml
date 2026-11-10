@@ -1,0 +1,45 @@
+# epic-official-channels stories — build order. Approved 2026-11-10 (autopilot).
+
+[[entry]]
+id = 1
+type = "story"
+title = "Official channels BFF and live list on en"
+description = "Tracer: thin vertical slice — contract type { id, title, logo, link }, Next.js Route Handler GET /api/official-channels (nodejs) with an upstream adapter (OFFICIAL_CHANNELS_API_URL, OFFICIAL_CHANNELS_REVALIDATE default 300, AbortSignal timeout ~5s, tags [official-channels]), unconfigured mode { data: { items: [] }, mode: unconfigured }, OFFICIAL_CHANNELS_FIXTURE=1 fixture mode, and the live list rendered over the existing /en/official-channels slot with en list labels; md keeps only the shell."
+verify = "pnpm exec next build passes; with $env:OFFICIAL_CHANNELS_FIXTURE='1' pnpm exec next start -p 4310, GET /en/official-channels shows the fixture titles and https://t.me/... links and GET /api/official-channels returns { data: { items }, mode: \"fixture\" } with upstream order preserved; with both env vars unset the same GET returns items [] and mode \"unconfigured\" and the page shows the empty state; a pnpm dlx tsx assert over .next/static finds no /api/channels string in client chunks and the response shape matches the { id, title, logo, link } type."
+covers = ["R1", "R4", "R5", "R6", "R10"]
+after = []
+hitl = false
+risk = "high"
+
+[[entry]]
+id = 2
+type = "story"
+title = "Public upstream channels endpoint and degradation"
+description = "Least-certain: writes the recorded upstream contract and the ready patch docs/upstream/live-score-public-channels.patch (GET /api/public/channels, no auth, listOwnerChannels) for the live-score owner, wires the adapter to a real stub upstream via OFFICIAL_CHANNELS_API_URL, adds a contract-shape test against that stub, and makes timeout/500/malformed responses degrade to a usable 200 error state instead of failing the page."
+verify = "docs/upstream/live-score-public-channels.patch exists and its diff adds app.get(\"/api/public/channels\") calling listOwnerChannels without the auth middleware; start a stub serving the contract on :4399 (pnpm dlx tsx), set $env:OFFICIAL_CHANNELS_API_URL='http://127.0.0.1:4399/api/public/channels', pnpm exec next start -p 4311, GET /api/official-channels returns the stub items in order; stop the stub (or return 500 / hang past the timeout) and GET /en/official-channels still returns 200 with the error state text and no stack trace; pnpm dlx tsx contract asserts pass against the stub payload."
+covers = ["R2", "R3", "R5"]
+after = [1]
+hitl = false
+risk = "high"
+
+[[entry]]
+id = 3
+type = "story"
+title = "Six-locale list copy and full states"
+description = "Finishes the remaining five locales plus ar RTL: list heading, empty, loading and error labels in messages/{ar,en,es,fr,pt,ru}.json (URL locale ids, pt for pt-BR content), logical CSS properties for ar, and the complete empty/error/loading/accessibility states (aria-live, list semantics, focusable links) over the states proven in stories 1-2; content/*/official-channels.md keeps shell copy only and SEO surfaces stay untouched."
+verify = "pnpm exec next build passes; pnpm exec next start -p 4312 then GET /{ar,en,es,fr,pt,ru}/official-channels each returns 200 and renders that locale's list labels from messages/*.json (ar document has dir=rtl and logical-property layout), the empty state appears for all six when env is unset, the error state appears for all six with the upstream down, and GET /sitemap.xml still lists /{locale}/official-channels for all six locales; a pnpm dlx tsx assert checks every list label key exists in all six message files."
+covers = ["R7", "R8", "R9"]
+after = [1, 2]
+hitl = false
+risk = "medium"
+
+[[entry]]
+id = 4
+type = "story"
+title = "Refactor sweep"
+description = "Cleanup-only pass over deferred nits from this epic's plans and reviews (adapter typing, duplicated state branching, label-key naming, test helpers); no new scope, no new features."
+verify = "pnpm exec next build and pnpm run lint pass; offline checks (pnpm dlx tsx asserts, GET /api/official-channels on :4313) still green; the story plan at its start lists exactly the cleanup items and nothing beyond them."
+covers = []
+after = [1, 2, 3]
+hitl = false
+risk = "low"
