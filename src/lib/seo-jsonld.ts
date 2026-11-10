@@ -1,4 +1,5 @@
 import { siteDetails } from "@/data/siteDetails";
+import { stripOptionalFrontmatter } from "@/lib/content";
 
 export type FaqQaPair = {
 	question: string;
@@ -104,17 +105,4 @@ export function extractFaqPairs(markdown: string): FaqQaPair[] {
 	}
 
 	return pairs;
-}
-
-function stripOptionalFrontmatter(markdown: string): string {
-	if (!markdown.startsWith("---")) {
-		return markdown.trim();
-	}
-
-	const match = /^---\r?\n[\s\S]*?\r?\n---(?:\r?\n([\s\S]*))?$/.exec(markdown);
-	if (!match) {
-		return markdown.trim();
-	}
-
-	return (match[1] ?? "").trim();
 }

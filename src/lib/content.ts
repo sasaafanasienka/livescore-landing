@@ -54,3 +54,20 @@ export async function getPageMarkdown(
 	const raw = await readFile(filePath, "utf8");
 	return raw.trim();
 }
+
+/**
+ * Drop optional leading `---` YAML fence for body render / parsers.
+ * Unclosed or missing fence → return trimmed markdown unchanged.
+ */
+export function stripOptionalFrontmatter(markdown: string): string {
+	if (!markdown.startsWith("---")) {
+		return markdown.trim();
+	}
+
+	const match = /^---\r?\n[\s\S]*?\r?\n---(?:\r?\n([\s\S]*))?$/.exec(markdown);
+	if (!match) {
+		return markdown.trim();
+	}
+
+	return (match[1] ?? "").trim();
+}

@@ -4,7 +4,11 @@ import { notFound } from "next/navigation";
 
 import { siteDetails } from "@/data/siteDetails";
 import { routing, type UrlLocale } from "@/i18n/routing";
-import { type MarketingPage, getPageMarkdown } from "@/lib/content";
+import {
+	type MarketingPage,
+	getPageMarkdown,
+	stripOptionalFrontmatter,
+} from "@/lib/content";
 
 type Props = {
 	locale: string;
@@ -18,7 +22,8 @@ export default async function MarketingMarkdownPage({ locale, page }: Props) {
 	setRequestLocale(locale);
 
 	const t = await getTranslations("Shell");
-	const body = await getPageMarkdown(locale as UrlLocale, page);
+	const raw = await getPageMarkdown(locale as UrlLocale, page);
+	const body = stripOptionalFrontmatter(raw);
 
 	return (
 		<section className="min-h-[60vh] flex flex-col items-center justify-center gap-6 px-6 pt-28 pb-16 text-center">
