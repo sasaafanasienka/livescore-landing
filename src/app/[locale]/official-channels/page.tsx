@@ -1,7 +1,10 @@
+import { Suspense } from "react";
+
 import type { Metadata } from "next";
 
 import MarketingMarkdownPage from "@/components/MarketingMarkdownPage";
 import OfficialChannelsList from "@/components/OfficialChannelsList";
+import OfficialChannelsLoading from "@/components/OfficialChannelsLoading";
 import { MARKETING_PAGES } from "@/lib/content";
 import { marketingPageMetadata } from "@/lib/seo-metadata";
 import { isUrlLocale } from "@/lib/seo-sitemap";
@@ -34,14 +37,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function LocaleOfficialChannelsPage({ params }: Props) {
+	// `MarketingMarkdownPage` 404s an unknown locale; this guard only keeps the
+	// list's `UrlLocale` type honest for the JSX below.
+	const listLocale = isUrlLocale(params.locale) ? params.locale : null;
+
 	return (
 		<MarketingMarkdownPage
 			locale={params.locale}
 			page={MARKETING_PAGES.officialChannels}
 		>
-			{/* Tracer scope: live list on `en` only; the other five locales keep the
-			    static shell until story 4.3 adds their `OfficialChannels` labels. */}
-			{params.locale === "en" ? <OfficialChannelsList locale="en" /> : null}
+			{/* Streamed on every locale: the shell copy above flushes first, then the
+			    list (or its labelled skeleton) in the same server response. Still a
+			    server component — no client fetch, no `/api/channels` call. */}
+			{listLocale ? (
+				<Suspense fallback={<OfficialChannelsLoading locale={listLocale} />}>
+					<OfficialChannelsList locale={listLocale} />
+				</Suspense>
+			) : null}
 		</MarketingMarkdownPage>
 	);
 }

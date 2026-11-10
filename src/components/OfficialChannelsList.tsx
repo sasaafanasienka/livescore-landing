@@ -14,14 +14,28 @@ type Props = {
 	locale: UrlLocale;
 };
 
+/** Visible focus ring for the in-list links: works in both writing directions. */
+const LINK_CLASSES =
+	"rounded text-base font-medium text-secondary underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary";
+
+/** Visible focus ring for the error-state bot CTA. */
+const CTA_CLASSES =
+	"text-black bg-primary hover:bg-primary-accent inline-block rounded-full px-6 py-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary";
+
 /**
  * Live official channels list — server component (no client fetch, no
  * `/api/channels` call in the browser). Reads the shared server module that the
  * BFF route also serves, so the page and `GET /api/official-channels` can never
- * disagree. Labels come from the `OfficialChannels` message namespace.
+ * disagree. Labels come from the `OfficialChannels` message namespace and exist
+ * in all six URL locales.
  *
  * States: error (upstream failed) → error copy + bot CTA; unconfigured or empty
- * list → empty state; otherwise the list in upstream order.
+ * list → empty state; otherwise the list in upstream order. Both degraded states
+ * are polite live regions so an assistive technology announces the state change.
+ *
+ * Direction-agnostic on purpose: Tailwind logical utilities (`text-start`) plus
+ * flex `gap` keep `ar` (RTL) identical to `en` in mirror image — no
+ * `ml/mr/pl/pr/text-left` anywhere.
  */
 export default async function OfficialChannelsList({ locale }: Props) {
 	const t = await getTranslations({ locale, namespace: "OfficialChannels" });
@@ -32,7 +46,7 @@ export default async function OfficialChannelsList({ locale }: Props) {
 		<section
 			aria-labelledby="official-channels-list-heading"
 			data-mode={mode}
-			className="mx-auto w-full max-w-2xl text-left"
+			className="mx-auto w-full max-w-2xl text-start"
 		>
 			<h2
 				id="official-channels-list-heading"
@@ -42,7 +56,11 @@ export default async function OfficialChannelsList({ locale }: Props) {
 			</h2>
 
 			{mode === "error" ? (
-				<div className="rounded-2xl bg-hero-background p-6">
+				<div
+					role="status"
+					aria-live="polite"
+					className="rounded-2xl bg-hero-background p-6"
+				>
 					<h3 className="mb-2 text-xl font-semibold">{t("errorTitle")}</h3>
 					<p className="mb-4 text-base text-foreground-accent">
 						{t("errorBody")}
@@ -51,13 +69,17 @@ export default async function OfficialChannelsList({ locale }: Props) {
 						href={siteDetails.botUrl}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="text-black bg-primary hover:bg-primary-accent inline-block rounded-full px-6 py-2 transition-colors"
+						className={CTA_CLASSES}
 					>
 						{tShell("cta")}
 					</a>
 				</div>
 			) : items.length === 0 ? (
-				<div className="rounded-2xl bg-hero-background p-6">
+				<div
+					role="status"
+					aria-live="polite"
+					className="rounded-2xl bg-hero-background p-6"
+				>
 					<h3 className="mb-2 text-xl font-semibold">{t("emptyTitle")}</h3>
 					<p className="text-base text-foreground-accent">{t("emptyBody")}</p>
 				</div>
@@ -81,12 +103,12 @@ export default async function OfficialChannelsList({ locale }: Props) {
 										height={48}
 										loading="lazy"
 										referrerPolicy="no-referrer"
-										className="h-12 w-12 rounded-full object-cover"
+										className="h-12 w-12 shrink-0 rounded-full object-cover"
 									/>
 								) : (
 									<span
 										aria-hidden="true"
-										className="flex h-12 w-12 items-center justify-center rounded-full bg-hero-background text-lg font-semibold text-foreground-accent"
+										className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-hero-background text-lg font-semibold text-foreground-accent"
 									>
 										{channelInitial(item.title)}
 									</span>
@@ -95,10 +117,10 @@ export default async function OfficialChannelsList({ locale }: Props) {
 									href={item.link}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="text-base font-medium text-secondary underline-offset-4 hover:underline"
+									aria-label={t("openChannel", { title: item.title })}
+									className={LINK_CLASSES}
 								>
 									{item.title}
-									<span className="sr-only"> — {t("openChannel")}</span>
 								</a>
 							</li>
 						))}

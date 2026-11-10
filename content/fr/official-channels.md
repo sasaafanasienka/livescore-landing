@@ -1,8 +1,13 @@
+---
+title: Live Score — chaînes officielles de ligues
+description: Chaînes officielles de ligues sur Telegram du propriétaire de l’app Live Score. Chargées depuis le produit, distinctes des chaînes de notification via /channel.
+---
+
 Live Score
 
-Chaînes officielles de ligues — emplacement provisoire
+Chaînes officielles de ligues
 
-Cette page marketing est un emplacement statique pour la liste des chaînes officielles de ligues Live Score (chaînes du propriétaire de l’app). L’annuaire en direct est dans la Mini App Telegram ; cette route conserve un emplacement stable jusqu’à son branchement ici. Aucun annuaire de chaînes n’est publié sur cette page.
+Voici les chaînes officielles sur Telegram gérées par le propriétaire de l’app Live Score. La liste de cette page est chargée depuis le produit : elle reste donc à jour d’elle-même, sans modifier le texte de la page ni se connecter à l’app pour la lire.
 
 Les chaînes officielles de ligues sont distinctes des chaînes de notification enregistrées via /channel.
 

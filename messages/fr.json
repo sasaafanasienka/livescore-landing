@@ -17,5 +17,16 @@
 			"privacy": "Confidentialité",
 			"terms": "Conditions"
 		}
+	},
+	"OfficialChannels": {
+		"listHeading": "Chaînes officielles de ligues",
+		"count": "{count, plural, one {# chaîne officielle} many {# de chaînes officielles} other {# chaînes officielles}}",
+		"emptyTitle": "Aucune chaîne à afficher pour le moment",
+		"emptyBody": "La liste des chaînes officielles n’est pas encore publiée sur le site. Ouvrez LiveScoreAppBot sur Telegram pour voir les ligues et les chaînes dans l’application.",
+		"errorTitle": "La liste des chaînes est momentanément indisponible",
+		"errorBody": "Nous n’avons pas pu charger les chaînes officielles à l’instant. La liste se met à jour automatiquement : réessayez dans quelques minutes.",
+		"logoAlt": "Logo de {title}",
+		"openChannel": "{title} — ouvrir la chaîne officielle sur Telegram",
+		"loading": "Chargement des chaînes officielles…"
 	}
 }

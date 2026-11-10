@@ -17,5 +17,16 @@
 			"privacy": "Privacidad",
 			"terms": "Términos"
 		}
+	},
+	"OfficialChannels": {
+		"listHeading": "Canales oficiales de ligas",
+		"count": "{count, plural, one {# canal oficial} many {# de canales oficiales} other {# canales oficiales}}",
+		"emptyTitle": "Todavía no hay canales que mostrar",
+		"emptyBody": "La lista de canales oficiales aún no está publicada en el sitio. Abre LiveScoreAppBot en Telegram para ver las ligas y los canales dentro de la app.",
+		"errorTitle": "La lista de canales no está disponible por el momento",
+		"errorBody": "No pudimos cargar los canales oficiales ahora mismo. La lista se actualiza automáticamente, así que vuelve a intentarlo en unos minutos.",
+		"logoAlt": "Logotipo de {title}",
+		"openChannel": "{title} — abrir el canal oficial en Telegram",
+		"loading": "Cargando los canales oficiales…"
 	}
 }
