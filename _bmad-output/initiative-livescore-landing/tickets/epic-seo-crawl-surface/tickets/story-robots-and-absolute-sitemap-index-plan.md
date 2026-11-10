@@ -3,7 +3,7 @@ title: 'Robots and absolute sitemap index'
 type: feature
 ticket: 1
 created: '2026-11-10'
-status: built
+status: done
 baseline_revision: '3c005f922ce361ab4e5fe9315fee62e8aa995965'
 route: full
 route_source: auto
