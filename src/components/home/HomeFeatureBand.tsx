@@ -13,6 +13,12 @@ type Props = {
 	imageSrc: string;
 	imageAlt: string;
 	imageAtRight?: boolean;
+	/** Intrinsic width for next/image; default keeps Mini App 384×762. */
+	imageWidth?: number;
+	/** Intrinsic height for next/image; default keeps Mini App 384×762. */
+	imageHeight?: number;
+	/** Responsive sizes so Next emits a useful srcset (max-w-sm = 24rem). */
+	sizes?: string;
 };
 
 /** Screenshot + copy band (notifications / Mini App). */
@@ -24,6 +30,9 @@ export default function HomeFeatureBand({
 	imageSrc,
 	imageAlt,
 	imageAtRight = true,
+	imageWidth = 384,
+	imageHeight = 762,
+	sizes,
 }: Props) {
 	return (
 		<PageSection id={id}>
@@ -54,8 +63,9 @@ export default function HomeFeatureBand({
 						<Image
 							src={imageSrc}
 							alt={imageAlt}
-							width={384}
-							height={762}
+							width={imageWidth}
+							height={imageHeight}
+							sizes={sizes}
 							quality={90}
 							className="mx-auto h-auto w-full"
 						/>

@@ -50,6 +50,9 @@ export default async function HomeLanding({ locale }: Props) {
 					imageSrc="/images/home-notifications.webp"
 					imageAlt={copy.notifications.imageAlt}
 					imageAtRight
+					imageWidth={460}
+					imageHeight={1024}
+					sizes="(max-width: 768px) 100vw, 24rem"
 				/>
 				<HomeFeatureBand
 					id="mini-app"
