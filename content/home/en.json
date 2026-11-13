@@ -11,7 +11,7 @@
 			"Goals, cards, full-time results, and more: turn each alert type on or off",
 			"Match cards with stats you’ll actually want to share with friends"
 		],
-		"imageAlt": "Football. LIVE bot chat in Telegram with goal score alerts, a score-correction notice, a full-time Albania–Finland summary card, and Open match buttons"
+		"imageAlt": "Phone mockup of the Football. LIVE Telegram bot chat with goal score alerts, a score-correction notice, a full-time Albania–Finland summary card, and Open match buttons"
 	},
 	"miniApp": {
 		"title": "A handy Mini App with match centre, settings, and favourites",
@@ -21,11 +21,11 @@
 			"Every match card with key events, lineups, and stats",
 			"A Favourites tab so you never miss a thing"
 		],
-		"imageAlt": "Football. LIVE Mini App match centre screen"
+		"imageAlt": "Phone mockup of the Football. LIVE Mini App: Italy vs France full-time lineups tab with formations, coaches, and player ratings on the pitch"
 	},
 	"howItWorks": {
 		"title": "How it works",
-		"description": "Notifications can be set up not only for yourself but also for a group of friends or your own Telegram channel. Read the instructions:",
+		"description": "Notifications can be set up not only for yourself, but also for groups or a Telegram channel. Read the instructions:",
 		"tabs": [
 			{
 				"id": "personal",
@@ -61,7 +61,7 @@
 	},
 	"pricing": {
 		"title": "Pricing for groups and channels",
-		"description": "A free tier and Chat Premium paid in Stars — for registered groups and channels.",
+		"description": "",
 		"moreLink": "Full pricing page",
 		"freeColumn": "Free",
 		"premiumColumn": "Premium",

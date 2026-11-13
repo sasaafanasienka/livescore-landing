@@ -50,7 +50,7 @@ export default async function HomeLanding({ locale }: Props) {
 					imageSrc="/images/home-notifications.webp"
 					imageAlt={copy.notifications.imageAlt}
 					imageAtRight
-					imageWidth={460}
+					imageWidth={534}
 					imageHeight={1024}
 					sizes="(max-width: 768px) 100vw, 24rem"
 				/>
@@ -62,6 +62,9 @@ export default async function HomeLanding({ locale }: Props) {
 					imageSrc="/images/home-miniapp.webp"
 					imageAlt={copy.miniApp.imageAlt}
 					imageAtRight={false}
+					imageWidth={534}
+					imageHeight={1024}
+					sizes="(max-width: 768px) 100vw, 24rem"
 				/>
 			</div>
 			<Suspense fallback={null}>

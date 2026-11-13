@@ -11,7 +11,7 @@
 			"Gols, cartões, placar final e mais: ligue ou desligue cada tipo de alerta",
 			"Cards de jogo com estatísticas que dá vontade de compartilhar com os amigos"
 		],
-		"imageAlt": "Chat do bot Futebol. LIVE no Telegram com alertas de gols e placar, aviso de correção de placar, card de resumo do placar final Albania–Finlândia e botões Open match"
+		"imageAlt": "Mockup de telefone do chat do bot Futebol. LIVE no Telegram: alertas de gols e placar, aviso de correção, card do placar final Albania–Finlândia e botões Open match"
 	},
 	"miniApp": {
 		"title": "Mini App prático com central de jogos, definições e favoritos",
@@ -21,11 +21,11 @@
 			"Card de cada jogo com eventos principais, escalações e estatísticas",
 			"Aba Favoritos para não perder nada"
 		],
-		"imageAlt": "Tela da central de jogos do Mini App Futebol. LIVE"
+		"imageAlt": "Mockup de telefone do Mini App Futebol. LIVE: aba Lineups Itália–França (full time) com esquemas, técnicos e notas dos jogadores em campo"
 	},
 	"howItWorks": {
 		"title": "Como funciona",
-		"description": "As notificações podem ser configuradas não só para você, mas também para um grupo de amigos ou o seu próprio canal do Telegram. Leia as instruções:",
+		"description": "As notificações podem ser configuradas não só para você, mas também para grupos ou um canal do Telegram. Leia as instruções:",
 		"tabs": [
 			{
 				"id": "personal",
@@ -61,7 +61,7 @@
 	},
 	"pricing": {
 		"title": "Preços para grupos e canais",
-		"description": "Nível grátis e Chat Premium em Stars — para grupos e canais registados.",
+		"description": "",
 		"moreLink": "Página completa de preços",
 		"freeColumn": "Grátis",
 		"premiumColumn": "Premium",

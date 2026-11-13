@@ -26,7 +26,9 @@ export default function PricingTabs({
 					<SectionTitle>
 						<h2 className="mb-4">{title}</h2>
 					</SectionTitle>
-					<p className="text-foreground-accent">{description}</p>
+					{description ? (
+						<p className="text-foreground-accent">{description}</p>
+					) : null}
 				</div>
 
 				<div className="mx-auto max-w-3xl">

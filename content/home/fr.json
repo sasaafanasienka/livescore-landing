@@ -11,7 +11,7 @@
 			"Buts, cartons, score final et plus encore : activez ou désactivez chaque type d’alerte",
 			"Des cartes de match avec stats qu’on a vraiment envie de partager entre amis"
 		],
-		"imageAlt": "Chat du bot Football. LIVE dans Telegram avec alertes de buts et de score, avis de correction de score, carte de résumé final Albania–Finlande et boutons Open match"
+		"imageAlt": "Mockup téléphone du chat bot Football. LIVE dans Telegram : alertes de buts et de score, avis de correction, carte de résumé final Albania–Finlande et boutons Open match"
 	},
 	"miniApp": {
 		"title": "Une Mini App pratique avec centre des matchs, réglages et favoris",
@@ -21,11 +21,11 @@
 			"Fiche de chaque match avec événements clés, compositions et statistiques",
 			"Onglet Favoris pour ne rien manquer"
 		],
-		"imageAlt": "Écran du centre des matchs de la Mini App Football. LIVE"
+		"imageAlt": "Mockup téléphone de la Mini App Football. LIVE : onglet Lineups Italie–France (full time) avec schémas, entraîneurs et notes des joueurs sur le terrain"
 	},
 	"howItWorks": {
 		"title": "Comment ça marche",
-		"description": "Les notifications peuvent être configurées non seulement pour toi, mais aussi pour un groupe d'amis ou ta propre chaîne Telegram. Lis les instructions :",
+		"description": "Les notifications peuvent être configurées non seulement pour toi, mais aussi pour des groupes ou une chaîne Telegram. Lis les instructions :",
 		"tabs": [
 			{
 				"id": "personal",
@@ -61,7 +61,7 @@
 	},
 	"pricing": {
 		"title": "Tarifs pour groupes et canaux",
-		"description": "Niveau gratuit et Chat Premium en Stars — pour les groupes et canaux enregistrés.",
+		"description": "",
 		"moreLink": "Page tarifs complète",
 		"freeColumn": "Gratuit",
 		"premiumColumn": "Premium",
