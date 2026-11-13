@@ -1,0 +1,47 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "livescore-landing",
+	"main": ".open-next/worker.js",
+	"compatibility_date": "2026-11-13",
+	"compatibility_flags": [
+		"nodejs_compat",
+		"global_fetch_strictly_public"
+	],
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"services": [
+		{
+			"binding": "WORKER_SELF_REFERENCE",
+			"service": "livescore-landing"
+		}
+	],
+	"r2_buckets": [
+		{
+			"binding": "NEXT_INC_CACHE_R2_BUCKET",
+			// pnpm exec wrangler r2 bucket create livescore-landing-cache
+			"bucket_name": "livescore-landing-cache"
+		}
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "NEXT_CACHE_DO_QUEUE",
+				"class_name": "DOQueueHandler"
+			}
+		]
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_sqlite_classes": [
+				"DOQueueHandler"
+			]
+		}
+	],
+	"vars": {
+		"OFFICIAL_CHANNELS_API_URL": "https://5.189.175.46.sslip.io/api/channels",
+		"OFFICIAL_CHANNELS_ASSET_ORIGIN": "https://5.189.175.46.sslip.io"
+	}
+}

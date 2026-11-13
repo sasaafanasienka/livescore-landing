@@ -18,7 +18,7 @@ import { marketingPageMetadata } from "@/lib/seo-metadata";
 import { isUrlLocale } from "@/lib/seo-sitemap";
 
 type Props = {
-	params: { locale: string };
+	params: Promise<{ locale: string }>;
 };
 
 /**
@@ -29,24 +29,28 @@ export const revalidate = 300;
 
 /** Home → MARKETING_SITEMAP urlPath `""`. */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-	if (!isUrlLocale(params.locale)) {
+	const { locale } = await params;
+
+	if (!isUrlLocale(locale)) {
 		return {};
 	}
 
-	return marketingPageMetadata(params.locale, "", MARKETING_PAGES.home);
+	return marketingPageMetadata(locale, "", MARKETING_PAGES.home);
 }
 
 export default async function LocaleHomePage({ params }: Props) {
-	if (!hasLocale(routing.locales, params.locale)) {
+	const { locale } = await params;
+
+	if (!hasLocale(routing.locales, locale)) {
 		notFound();
 	}
-	setRequestLocale(params.locale);
+	setRequestLocale(locale);
 
-	if (!isUrlLocale(params.locale)) {
+	if (!isUrlLocale(locale)) {
 		notFound();
 	}
 
-	const copy = await getHomeCopy(params.locale);
+	const copy = await getHomeCopy(locale);
 
 	return (
 		<>
@@ -57,7 +61,7 @@ export default async function LocaleHomePage({ params }: Props) {
 					faqPageJsonLd(copy.faq.items),
 				]}
 			/>
-			<HomeLanding locale={params.locale} />
+			<HomeLanding locale={locale} />
 		</>
 	);
 }

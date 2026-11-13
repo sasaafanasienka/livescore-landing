@@ -2,15 +2,15 @@ import { locales } from "@/i18n/routing";
 import { buildUrlsetXml, isUrlLocale } from "@/lib/seo-sitemap";
 
 type RouteParams = {
-	params: { locale: string };
+	params: Promise<{ locale: string }>;
 };
 
 export function generateStaticParams() {
 	return locales.map((locale) => ({ locale }));
 }
 
-export function GET(_request: Request, { params }: RouteParams): Response {
-	const locale = params?.locale;
+export async function GET(_request: Request, { params }: RouteParams): Promise<Response> {
+	const { locale } = await params;
 
 	if (!locale || !isUrlLocale(locale)) {
 		return new Response(null, { status: 404 });
