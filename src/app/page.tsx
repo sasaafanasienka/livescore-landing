@@ -1,7 +1,5 @@
 /**
- * Temporary root stub. File kept (no deletes); body unused when middleware handles `/`.
- * next-intl middleware (localeDetection: true, localeCookie: false) negotiates
- * Accept-Language on `/` → matching locale prefix (`ar|en|es|fr|pt|ru`), fallback `/en`.
+ * Root stub. File kept (no deletes); body unused — `src/middleware.ts` 308s `/` → `/en`.
  */
 export default function RootPage() {
 	return null;

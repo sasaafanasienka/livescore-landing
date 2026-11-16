@@ -1,4 +1,4 @@
 ---
-title: Football scores and match alerts in Telegram — Football. LIVE
-description: Configurable match notifications in personal chats, groups, and channels, plus a Mini App — via LiveScoreAppBot.
+title: Live score Telegram bot & match alerts — Football. LIVE
+description: Live score and match alerts via a Telegram bot — personal chats, groups, channels, plus a Mini App.
 ---

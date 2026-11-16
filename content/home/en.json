@@ -1,6 +1,6 @@
 {
 	"hero": {
-		"headline": "Football scores and match alerts in Telegram",
+		"headline": "Live score and match alerts via a Telegram bot",
 		"subhead": "Football. LIVE delivers configurable match notifications in personal chats, groups, and channels — plus a Mini App to browse matches and manage favourites."
 	},
 	"notifications": {

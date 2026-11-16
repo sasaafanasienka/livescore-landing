@@ -5,7 +5,19 @@ import { getTranslations } from "next-intl/server";
 import OfficialChannelsLoading from "@/components/OfficialChannelsLoading";
 import { siteDetails } from "@/data/siteDetails";
 import type { UrlLocale } from "@/i18n/routing";
+import {
+	cloudflareImageSrcSet,
+	cloudflareImageUrl,
+} from "@/lib/cf-image";
 import { getOfficialChannels } from "@/lib/official-channels";
+
+const LOGO_SIZE = 48;
+const LOGO_CF = {
+	width: LOGO_SIZE,
+	height: LOGO_SIZE,
+	fit: "cover" as const,
+	format: "auto" as const,
+};
 
 /** First grapheme of the title, used as the logo placeholder. */
 function channelInitial(title: string): string {
@@ -84,13 +96,16 @@ export default async function OfficialChannelsHome({ locale }: Props) {
 								className="flex h-full items-center gap-4 rounded-2xl border border-black/5 bg-white p-4 text-black transition-colors hover:border-black/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
 							>
 								{item.logo ? (
-									// eslint-disable-next-line @next/next/no-img-element -- upstream logos are arbitrary hosts
+									// eslint-disable-next-line @next/next/no-img-element -- CF /cdn-cgi/image + upstream hosts
 									<img
-										src={item.logo}
+										src={cloudflareImageUrl(item.logo, LOGO_CF)}
+										srcSet={cloudflareImageSrcSet(item.logo, LOGO_CF)}
 										alt={t("logoAlt", { title: item.title })}
-										width={48}
-										height={48}
+										width={LOGO_SIZE}
+										height={LOGO_SIZE}
+										sizes={`${LOGO_SIZE}px`}
 										loading="lazy"
+										decoding="async"
 										referrerPolicy="no-referrer"
 										className="h-12 w-12 shrink-0 rounded-full object-cover"
 									/>
